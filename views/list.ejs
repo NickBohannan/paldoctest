@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>PAL Order Portal All Orders</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+</head>
+
+<body>
+    <%- include('header', {
+        cookies: cookies
+    }) %>
+    <div class="row">
+        <%- include('sidebar') %>
+        <div class="all-order-container">
+            <div class="landing-order-title">
+                All Orders
+            </div>
+            <div class="page-link-row">
+                <% let previousPage = "/list/" + (pageRequest - 1) %>
+                <a href=<%= previousPage %>>
+                        <i class="fas fa-arrow-left"></i>
+                </a>
+                <% for (let j=0;j < totalPages;j++) { %>
+                <% if (pageRequest == j+1) { %>
+                <a class="current-page"><%= j+1 %></a>
+                <% } else { %>
+                <% let pageURL = "/list/" + `${j+1}` %>
+                <a class="page-link" href=<%=pageURL %> ><%= j+1 %></a>
+                <% } %>
+                <% } %>
+                <% let nextPage = "/list/" + (pageRequest + 1) %>
+                <a href=<%= nextPage %>>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>  
+            <div class="main-list-container">
+                <div class="order-row legend">
+                    <div class="text-box b noview"></div>
+                    <div class="text-box b name order-number">Order Number</div>
+                    <div class="text-box b">Product</div>
+                    <div class="text-box b patient">Patient Name</div>
+                    <div class="text-box b dest">Shipping Method</div>
+                    <div class="text-box b">Date Entered</div>
+                    <!-- <div class="text-box b note">Notes</div> -->
+                </div>
+                <% for (let i=0; i < orders.length; i++) { %>
+                <% let url = "/orders/" + orders[i].order_no %>
+                <div class="order-row">
+                    <div id="view-button-container">
+                        <a href=<%=url %>>
+                            <div id="view-button">View</div>
+                        </a>
+                    </div>
+                    <div class="text-box order-number">
+                        <%= orders[i].order_no %>
+                    </div>
+                    <div class="text-box">
+                        <%= orders[i].product_name %>
+                    </div>
+                    <div class="text-box patient">
+                        <%= orders[i].patient_name %>
+                    </div>
+                    <div class="text-box dest">
+                        <%= orders[i].shipping_method %>
+                    </div>
+                    <div class="text-box">
+                        <% let dateString = orders[i].entry_date.toString().substring(4, 21) + " " + "CDT" %>
+                        <%= dateString %>
+                    </div>
+                    <!-- <div class="text-box note">
+                        <%= orders[i].note %>
+                    </div> -->
+                </div>
+                <% } %>
+                <div class="page-link-row page-link-bottom">
+                    <a href=<%= previousPage %>>
+                            <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <% for (let k=0;k < totalPages;k++) { %>
+                    <% if (pageRequest == k+1) { %>
+                    <a class="current-page"><%= k+1 %></a>
+                    <% } else { %>
+                    <% let pageURL = "/list/" + `${k+1}` %>
+                    <a class="page-link" href=<%=pageURL %> ><%= k+1 %></a>
+                    <% } %>
+                    <% } %>
+                    <a href=<%= nextPage %>>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>  
+            </div>
+        </div>
+    </div>
+    <%- include('footer') %>
+</body>
+
+</html>

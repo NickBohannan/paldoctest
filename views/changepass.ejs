@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>PAL Order Portal Change Password</title>
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+</head>
+
+<body class="login-body">
+  <div class="login-container">
+    <div class="login-image-container">
+      <img src="PAL_BlueTexture-350w.png" id="login-image" alt="PAL Main Image">
+    </div>
+    <div class="forgot-text">Please enter your email address along with a new password.
+    </div>
+    <form action="/changepass" method="post" id="login-form">
+      <label class="changepass-label">Email</label>  
+      <input type="text" class="login-input" name="email" placeholder="Email">
+      <label class="changepass-label">New Password</label>  
+      <input type="password" class="login-input" name="newPassword" placeholder="New Password">
+      <label class="changepass-label">Confirm New Password</label>  
+      <input type="password" class="login-input" name="confirmNewPassword" placeholder="Confirm New Password">
+      <input type="hidden" id="tokenId" name="token" />
+      <input type="submit" id="login-submit" value="Submit">
+    </form>
+    <div id="login-copyright">&copy; 2019 PAL Health Technologies</div>
+    <div id="rights-reserved">All Rights Reserved</div>
+  </div>
+</body>
+<script>
+  let tokenIdElement = document.querySelector("#tokenId")
+  let params = (new URL(document.location)).searchParams;
+  tokenIdElement.value = params.get("token");
+</script>
+
+</html>

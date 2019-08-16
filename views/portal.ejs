@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>PAL Order Portal Information</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+</head>
+
+<body>
+    <%- include('header', {
+        cookies: cookies
+    }) %>
+    <div class="row">
+        <%- include('sidebar') %>
+        <div class="all-order-container">
+            <div class="landing-order-title">
+                Portal Information
+            </div>
+            <div id="portal-information-container">
+                <div class="portal-information-label">Portal Version</div>
+                <div class="portal-information-value">Alpha 0.7.5</div>
+            </div>
+            <div id="portal-information-container">
+                <div class="portal-information-label">Upcoming Features</div>
+                <div class="portal-information-value">online payment</div>
+                <div class="portal-information-value">client-side notes and comments on orders</div>
+                <div class="portal-information-value">styling/graphics updates (sidebar and header)</div>
+                <div class="portal-information-value"></div>
+            </div>
+        </div>
+    </div>
+    <%- include('footer') %>
+</body>
+
+</html>

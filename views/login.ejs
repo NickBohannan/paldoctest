@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>PAL Order Portal Login</title>
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+</head>
+
+<body class="login-body">
+  <div class="login-container">
+    <div class="login-image-container">
+      <img src="PAL_BlueTexture-350w.png" id="login-image" alt="PAL Main Image">
+    </div>
+    <div id="login-text">Provider Portal Login</div>
+    <form action="/login" method="post" id="login-form">
+      <label class="changepass-label">Email</label> 
+      <input type="text" class="login-input" name="email" placeholder="Email">
+      <label class="changepass-label">Password</label> 
+      <input type="password" class="login-input" name="password" placeholder="Password">
+      <input type="submit" id="login-submit" value="Login">
+      <a href="/signup" id="signup-link">Sign Up</a>
+      <a href="/forgotpass" id="forgot-link">Forgot Password?</a>
+    </form>
+    <div id="login-copyright">&copy; 2019 PAL Health Technologies</div>
+    <div id="rights-reserved">All Rights Reserved</div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<div class="sidebar">
+    <div class="link-container">
+        <a href="/" id="home-link">
+            <div class="sidebar-element-container" id="home">
+                <div class="icon-container">
+                    <i class="fas fa-home"></i>
+                </div>
+                Home
+            </div>
+        </a>
+        <a href="/list/1">
+            <div class="sidebar-element-container" id="all-orders">
+                <div class="icon-container">
+                    <i class="fas fa-shoe-prints"></i>
+                </div>
+                View All Orders
+            </div>
+        </a>
+        <a href="/search">
+            <div class="sidebar-element-container" id="search">
+                <div class="icon-container">
+                    <i class="fas fa-binoculars"></i>
+                </div>
+                Search Orders
+            </div>
+        </a>
+        <a id="formstack-link">
+            <div class="sidebar-element-container" id="new-order">
+                <div class="icon-container">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                Create New Order
+            </div>
+        </a>
+        <a href="/portal">
+            <div class="sidebar-element-container" id="support">
+                <div class="icon-container">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                Portal Information
+            </div>
+        </a>
+        <a id="logout-link">
+            <div class="sidebar-element-container" id="logout">
+                <div class="icon-container">
+                    <i class="fas fa-desktop"></i>
+                </div>
+                Log Out
+            </div>
+        </a>
+        <div class="contact-container">
+            <div id="contact-title" id="title">Contact Us</div>
+            <div class="contact-element">
+                <div class="row">
+                    <div class="icon-container">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <span>PAL Main Line</span>
+                </div>
+                <span class="phone-number">(800) 223-2957</span>
+            </div>
+            <div class="contact-element">
+                <div class="row">
+                    <div class="icon-container">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <span>PAL IT</span>
+                </div>
+                <span class="phone-number">(309) 347-3329</span>
+            </div>
+            <div class="contact-element">
+                <div class="row">
+                    <div class="icon-container">
+                        <i class="fas fa-fax"></i>
+                    </div>
+                    <span>PAL Fax</span>
+                </div>
+                <span class="phone-number">(866) 381-3850</span>
+            </div>
+        </div>
+        <div class="external-links-container">
+            <div id="external-links-title">External Links</div>
+            <a href="http://www.xtremity3d.com">Xtremity3D</a>
+        </div>
+    </div>
+</div>
+<script>
+    // THIS IS THE COOKIE PARSER THAT ALLOWS FOR PRE POPULATION OF THE FORMSTACK FORM.
+    function getDate() {
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, "0");
+        let mm = String(today.getMonth() + 1).padStart(2, "0");
+        let yy = today.getFullYear();
+        return mm + "/" + dd + "/" + yy;
+    }
+
+    function deleteAllCookies() {
+        let cookies = document.cookie.split(";");
+
+        for (let i = 0; i < cookies.length; i++) {
+            let cookie = cookies[i];
+            let eqPos = cookie.indexOf("=");
+            let name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
+    }
+
+    let formstackLink = document.querySelector("#formstack-link");
+    let logoutLink = document.querySelector("#logout-link");
+
+    formstackLink.addEventListener("click", () => {
+        let formstackURL =
+            `http://palhealthtechnologies.formstack.com/forms/pal_prescription_orthoses_order_form?` +
+            `Account_Number=${Cookies.get("accountNumber")}&` +
+            `Name=${Cookies.get("name")}&` +
+            `Address=${Cookies.get("address")}&` +
+            `Date=${getDate()}&` +
+            `Phone=${Cookies.get("phone").substring(
+                0,
+                Cookies.get("phone").length - 4
+            )}`;
+
+        window.open(formstackURL);
+    });
+
+    logoutLink.addEventListener("click", e => {
+        e.preventDefault();
+        deleteAllCookies();
+        window.location = "/login";
+    });
+</script>

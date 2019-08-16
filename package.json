@@ -1,0 +1,32 @@
+{
+  "name": "paldocportal",
+  "version": "1.0.0",
+  "description": "Customer portal for PAL Health Technologies",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "author": "Nick Bohannan",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.0.0",
+    "ejs": "^2.6.1",
+    "express": "^4.17.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "node-fetch": "^2.6.0",
+    "nodemailer": "^6.3.0",
+    "sequelize": "^6.0.0",
+    "serve-favicon": "^2.5.0",
+    "tedious": "^6.2.0"
+  },
+  "devDependencies": {
+    "ejs-lint": "^0.3.0",
+    "jasmine": "^3.4.0",
+    "nodemon": "^1.19.1"
+  }
+}

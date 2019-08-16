@@ -1,0 +1,58 @@
+<head>
+    <link rel='icon' href='/favicon.ico' type='image/x-icon'/ >
+	<link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+    crossorigin="anonymous"
+	/>
+	<link
+		href="https://fonts.googleapis.com/css?family=Roboto:300"
+		rel="stylesheet"
+	/>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+</head>
+
+<div id="main-header-container">
+    <div class="main-header">
+        <a href="/" id="header-image">
+            <img src="/PortalHeader-01.png" />
+        </a>
+    </div>
+    <div id="provider-container">
+        <div class="welcome-container">
+            <div class="header-info-element">Provider:</div>
+            <div id="customer-name"><%= cookies.name %></div>
+            <div id="header-separator">|</div>
+            <div class="header-info-element">Account #:</div>
+            <div id="account-number"><%= cookies.accountNumber %></div>
+        </div>
+    </div>
+</div>
+<script>
+    let customerName = document.querySelector("#customer-name");
+    let accountNumber = document.querySelector("#account-number");
+
+    let cookieSplit = document.cookie.split(" ");
+    let cookieValueArray = [];
+
+    for (let i = 0; i < cookieSplit.length; i++) {
+        if (cookieSplit[i].charAt(cookieSplit[i].length - 1) == ";") {
+            cookieValueArray.push(
+                cookieSplit[i].substring(
+                    cookieSplit[i].indexOf("=") + 1,
+                    cookieSplit[i].indexOf(";")
+                )
+            );
+        } else {
+            cookieValueArray.push(
+                cookieSplit[i].substring(
+                    cookieSplit[i].indexOf("=") + 1,
+                    cookieSplit[i].length
+                )
+            );
+        }
+    }
+
+    let parsedName = cookieValueArray[2].replace(/%20/g, " ");
+</script>

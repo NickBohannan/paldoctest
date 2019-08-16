@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>PAL Customer Portal</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+</head>
+
+<body>
+    <%- include('header', {
+        cookies: cookies
+    }) %>
+    <div class="row">
+        <%- include('sidebar') %>
+        <div class="main-page-container">
+            <div id="welcome-banner">Welcome to Your PAL Provider Portal</div>
+            <div class="row" id="widget-row">
+                <div class="chart-container">
+                    <div class="chart-title">
+                        Product Shipments per Month
+                    </div>
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                </div>
+                <div class="support-container">
+                    <div class="support-header">
+                        <div class="row">
+                            <div id="support-widget-title">Active Support Holds</div>
+                        </div>
+                    </div>
+                    <div class="support-list-container">
+                        <div class="row support-list-element support-legend-container">
+                            <div id="support-ticket-status">Patient</div>
+                            <div id="support-ticket-status">Status</div>
+                            <div id="support-product-type">Product</div>
+                        </div>
+							<% orders.forEach(order => { %>
+							<% if (order.hold_code !== 0) { %>
+							<% let url = "orders/" + order.order_no %>
+							<div class="row support-list-element support-check">
+								<a href=<%=url %>>
+									<div id="support-ticket-number"><%= order.patient_name %></div>
+								</a>
+								<% if (order.hold_code == 1) { %>
+									<div id="support-ticket-status">Question for Provider</div>
+								<% } %>
+								<% if (order.hold_code == 2) { %>
+									<div id="support-ticket-status">Accounting Hold</div>
+								<% } %>
+								<% if (order.hold_code == 3) { %>
+									<div id="support-ticket-status">Customer Service Hold</div>
+								<% } %>
+								<% if (order.hold_code == 4) { %>
+									<div id="support-ticket-status">Sales Storage Hold</div>
+								<% } %>
+								<div id="support-product-type"><%= order.product_name %></div>
+							</div>
+                        <% }}) %>
+                    </div>
+                </div>
+            </div>
+            <div class="landing-order-container">
+                <div class="landing-order-title">
+                    Your 10 Most Recent Orders
+                </div>
+                <div class="main-list-container">
+                    <div class="order-row legend">
+                        <div class="text-box b noview"></div>
+                        <div class="text-box b name order-number">Order Number</div>
+                        <div class="text-box b">Product</div>
+                        <div class="text-box b patient">Patient Name</div>
+                        <div class="text-box b dest">Shipping Method</div>
+                        <div class="text-box b">Date Entered</div>
+                    </div>
+                    <% let loopNum %>
+                    <% if (orders.length < 10) { %>
+                    <%  loopNum = orders.length %>
+                    <% } else { %>
+                    <%  loopNum = 10 %>    
+                    <% } %>
+                    <% for (let i = 0; i < loopNum; i++) { %>
+                    <% let url = "orders/" + orders[i].order_no %>
+                    <div class="order-row">
+                        <div id="view-button-container">
+                            <a href=<%=url %>>
+                                <div id="view-button">View</div>
+                            </a>
+                        </div>
+                        <div class="text-box order-number">
+                            <%= orders[i].order_no %>
+                        </div>
+                        <div class="text-box">
+                            <%= orders[i].product_name %>
+                        </div>
+                        <div class="text-box patient">
+                            <%= orders[i].patient_name %>
+                        </div>
+                        <div class="text-box dest">
+                            <%= orders[i].shipping_method %>
+                        </div>
+                        <div class="text-box">
+                            <% let dateString = orders[i].entry_date.toString().substring(4, 21) + " " + "CDT" %>
+                            <%= dateString %>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('footer') %>
+    <script>
+
+        let currentMonth = new Date().getMonth()+1
+        let labels = [
+            'January', 'February', 'March',
+            'April', 'May', 'June',
+            'July', 'August', 'September',
+            'October', 'November', 'December'
+            ]
+        let data = [ 
+            Cookies.get('janOrders'),
+            Cookies.get('febOrders'),
+            Cookies.get('marOrders'),
+            Cookies.get('aprOrders'),
+            Cookies.get('mayOrders'),
+            Cookies.get('junOrders'),
+            Cookies.get('julOrders'),
+            Cookies.get('augOrders'),
+            Cookies.get('sepOrders'),
+            Cookies.get('octOrders'),
+            Cookies.get('novOrders'),
+            Cookies.get('decOrders')
+        ]
+
+        for (let j=0;j<12-currentMonth;j++) {
+            let labelPopValue = labels.pop()
+            labels.unshift(labelPopValue)
+            
+            let dataPopValue = data.pop()
+            data.unshift(dataPopValue)
+        }
+
+
+        if (document.querySelector(".support-check") == null) {
+            let newElement = document.createElement("div")
+            newElement.className = "no-support"
+            let newContent = document.createTextNode("You have no current holds on any orders.")
+            newElement.appendChild(newContent)
+            let beforeDiv = document.querySelector(".support-legend-container")
+            beforeDiv.parentNode.insertBefore(newElement, beforeDiv.nextSibling)
+        }
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Number of Orders',
+                    data: data,
+                    borderColor: '#102245',
+                    backgroundColor: '#102245',
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+      

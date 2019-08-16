@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Customer Login</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+</head>
+
+<body>
+    <%- include('header', {
+        cookies: cookies
+    }) %>
+    <div class="row">
+        <%- include('sidebar') %>
+        <div class="all-order-container">
+            <div class="landing-order-title">
+                Please go back and select a search parameter.
+            </div>
+        </div>
+    </div>
+    <%- include('footer') %>
+</body>
+
+</html>

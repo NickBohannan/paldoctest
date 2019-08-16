@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>PAL Order Portal Sign-Up</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+</head>
+
+<body class="login-body">
+    <div class="login-container" id="signup-container">
+        <div class="login-image-container">
+            <img src="PAL_BlueTexture-350w.png" id="login-image" alt="PAL Main Image">
+        </div>
+        <div id="login-text">Order Portal Sign Up</div>
+        <form action="/signup" method="post" id="signup-form">
+            <div class="form-row">
+                <div class="signup-label">
+                    <label>First Name*</label>
+                    <input type="text" class="login-input" name="firstName" placeholder="First Name*">
+                </div>
+                <div class="signup-label">
+                    <label>Last Name*</label>
+                    <input type="text" class="login-input" name="lastName" placeholder="Last Name*">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="signup-label">
+                    <label>Email*</label>
+                    <input type="text" class="login-input" name="email" placeholder="Email*">
+                </div>
+                <div class="signup-label">
+                    <label>Confirm Email*</label>
+                    <input type="text" class="login-input" name="confirmEmail" placeholder="Confirm Email*">
+                </div>
+            </div>
+            <div class="form-separator"></div>
+            <div id="account-number-text">Most providers are connected to one account number, however if you know your practice uses multiple, please enter additional numbers so that we may retrieve all of your orders.</div>
+            <div class="form-row">
+                <div class="signup-label">
+                    <label>Account Number*</label>
+                    <input type="text" class="login-input" name="accountNumber1" placeholder="Account Number 1*">
+                </div>
+                <div class="signup-label">
+                    <label>Account Number 2</label>
+                    <input type="text" class="login-input" name="accountNumber2" placeholder="Account Number 2">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="signup-label">
+                    <label>Account Number 3</label>
+                    <input type="text" class="login-input" name="accountNumber3" placeholder="Account Number 3">
+                </div>
+                <div class="signup-label">
+                    <label>Account Number 4</label>
+                    <input type="text" class="login-input" name="accountNumber4" placeholder="Account Number 4">
+                </div>
+            </div>
+            <div class="form-separator"></div>
+            <div class="form-row">
+                <div class="signup-label">
+                    <label>Password*</label>
+                    <input type="password" class="login-input" name="password" placeholder="Password*">
+                </div>
+                <div class="signup-label">
+                    <label>Confirm Password*</label>
+                    <input type="password" class="login-input" name="confirmPassword" placeholder="Confirm Password*">
+                </div>
+            </div>
+            <div id="account-number-text">* - required information</div>
+            <input type="submit" id="login-submit" value="Sign Up">
+        </form>
+        <div id="login-copyright">&copy; 2019 PAL Health Technologies</div>
+        <div id="rights-reserved">All Rights Reserved</div>
+    </div>
+</body>
+
+</html>

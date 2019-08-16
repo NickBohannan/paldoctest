@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <title>PAL Order Portal Single Order</title>
+        <link rel="stylesheet" type="text/css" href="/style.css" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300"
+            rel="stylesheet"
+        />
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+			integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+			crossorigin="anonymous"
+		/>
+    </head>
+
+    <body>
+        <%- include('header', { cookies: cookies }) %>
+        <div class="row">
+            <%- include('sidebar') %>
+            <div class="single-order-container">
+                <div class="single-order-title">Order Information</div>
+                <div class="order-ship-note-container">
+                    <div class="shipping-container">
+                        <div class="order-product-container">
+                            <div class="order-column">
+                                <div class="order-product-title">Order Number</div>
+                                <div class="order-data"><%= order.order_no %></div>
+                            </div>
+                            <div class="order-column">
+                                <div class="order-product-title">Product Type</div>
+                                <div class="order-data">
+                                    <%= order.product_type %>
+                                </div>
+                            </div>
+                        </div>
+						<div id="workflow-container">
+							<div id="workflow-text">
+								<% if (order.actual_ship_date.toString().substring(11, 15) !== "1899") { %>
+								<i class="fas fa-truck-moving"></i>
+								<%= "Your order has been shipped."  %>
+								<% } else if (qcPreShip == true) { %>
+								<i class="fas fa-search"></i>
+								<%= "Your order is in Quality Control and about ready to ship." %>
+								<% } else if (manufacturing == true) { %>
+								<i class="fas fa-tools"></i>
+								<%= "Your order is being manufactured." %>
+								<% } else if (order.entry_date) { %>
+								<i class="fas fa-clipboard"></i>
+								<%= "Your order has been entered and sized and is heading to manufacturing." %>
+								<% } else { %>
+								<%= "No tracking data available." %>
+								<% } %>   
+							</div>
+						</div>
+                        <div class="single-order-shipping-container-title single-order-order">
+                            Order Information
+                        </div>
+                        <div class="grid-container">
+                            <div class="order-labels">
+                                <div class="order-label-element">
+                                    Order Number:
+                                </div>
+                                <div class="order-label-element">
+                                    Product Name:
+                                </div>
+                                <div class="order-label-element">
+                                    Product Type:
+                                </div>
+                                <div class="order-label-element">
+                                    Patient Name:
+                                </div>
+                                <div class="order-label-element">
+                                    Provider Name:
+                                </div>
+                                <div class="order-label-element">
+                                    Date Entered:
+                                </div>
+                            </div>
+                            <div class="order-values">
+                                <div class="order-value-element">
+                                    <%= order.order_no %>
+                                </div>
+                                <div class="order-value-element">
+									<% if (order.product_name == "") { %>
+									<%= "N/A" %>
+									<% } else { %>
+                                    <%= order.product_name %>
+									<% } %>
+                                </div>
+                                <div class="order-value-element">
+                                    <%= order.product_type %>
+                                </div>
+                                <div class="order-value-element">
+                                    <%= order.patient_name %>
+                                </div>
+                                <div class="order-value-element">
+                                    <%= order.customer_name %>
+                                </div>
+                                <div class="order-value-element">
+                                    <% let entryString = order.entry_date.toString().substring(4, 21) + " " + "CDT" %>
+                                    <%= entryString %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-order-shipping-container-title">
+                            Shipping Information
+                        </div>
+                        <div class="grid-container-2">
+                            <div class="order-labels">
+                                <div class="order-label-element">
+                                    Street Address:
+                                </div>
+                                <div class="order-label-element">
+                                    City:
+                                </div>
+                                <div class="order-label-element">
+                                    State:
+                                </div>
+                                <div class="order-label-element">
+                                    Zip Code:
+                                </div>
+                                <div class="order-label-element">
+                                    Shipping Method:
+                                </div>
+                                <div class="order-label-element">
+                                    Date Shipped:
+                                </div>
+                                <div class="order-label-element">
+                                    Tracking Number:
+                                </div>
+                            </div>
+                            <!-- <a
+                                href="https://www.fedex.com/en-us/home.html"
+                                class="shipping-data"
+                            >
+                                <%= order.order_no %>
+                            </a> -->
+                            <div class="order-values">
+                                <div class="order-value-element">
+                                    <%= order.ship_to_addr1 %> <%=
+                                    order.ship_to_addr2 %> <%=
+                                    order.ship_to_addr3 %>
+                                </div>
+                                <div class="order-value-element">
+                                    <%= order.ship_to_city %>
+                                </div>
+                                <div class="order-value-element">
+                                    <%= order.ship_to_state %>
+                                </div>
+                                <div class="order-value-element">
+                                    <%= order.ship_to_zip %>
+                                </div>
+                                <div class="order-value-element">
+                                    <%= order.shipping_method %>
+                                </div>
+                                <div class="order-value-element">
+									<% if (order.actual_ship_date.toString().substring(11, 15) == '1899') { %>
+									<%= "Not Shipped" %>
+									<% } else { %>
+									<% let dateString = order.actual_ship_date.toString().substring(4, 21) + " " + "CDT" %>
+                                    <%= dateString %>
+									<% } %>
+                                </div>
+                                <div class="order-value-element">
+                                    <% if (order.tracking_number == null) { %>
+                                    <%= "N/A" %> <% } else if (order.tracking_number.substring(0, 2) == "1Z") { %> 
+                                    <% let url = "https://www.ups.com/track?loc=en_US&tracknum=" + order.tracking_number + "&requester=WT/trackdetails"%>
+                                    <a href="<%= url %>" target="_blank">
+                                        <%= order.tracking_number %>
+                                    </a>
+                                    <% } else { %>
+                                    <% let url = "https://www.fedex.com/apps/fedextrack/?action=track&trackingnumber=" + order.tracking_number + "&cntry_code=us&locale=en_US" %>
+                                    <a href="<%= url %>" target="_blank">
+                                      <%= order.tracking_number %>
+                                    </a>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        
+                        
+                        <!-- Invoices will be taken from Great Plains, not the production database -->
+
+                        <!-- <% if (order.total_invoice !== 0) { %>
+                          <div class="single-order-shipping-container-title">
+                              Total Invoice
+                          </div>
+                          <div id="single-order-invoice">
+                            $<%= order.total_invoice %>
+                          </div>
+                        <% } %> -->
+
+                        <div class="note-container">
+                            <div class="note-box">
+                                <div class="note-title">Notes</div>
+                                <div class="note-body shipping-data">
+                                    <%= order.hold_reason %>
+                                    <!-- Note content/order history goes here when ready -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('footer') %>
+    </body>
+</html>
