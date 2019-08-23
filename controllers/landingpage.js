@@ -17,10 +17,9 @@ module.exports = async (req, res) => {
             res.redirect("/login");
         } else {
 
-            let landingUser, orders;
+            let landingUser, orders, yearlyOrders, quarterlyOrders;
 			let nowDate = new Date(Date.now())
-			nowDate = nowDate - 31536000000
-			
+			nowDate = nowDate - 31536000000	
 
             // find the user that's logged in
             try {
@@ -40,7 +39,60 @@ module.exports = async (req, res) => {
                             ]
                         },
 						entry_date: {
-							[Op.gt]: moment().subtract(11, 'months').toDate()
+							[Op.gt]: moment().subtract(12, 'months').add(moment().date(), 'days').toDate()
+						}
+                    },
+                    order: [["entry_date", "DESC"]]
+                });
+            } catch (err) {
+                console.error(err);
+            }
+			
+			if (orders[0] == undefined) {
+				res.render("error", {
+					errorText: "Sorry, no orders were found."
+				})
+				return 1
+			}
+			
+			// query orders for the year
+			try {
+                // find all orders that belong to user and sort them by date
+                yearlyOrders = await Order.findAll({
+                    where: {
+                        customer_code: {
+                            [Op.or]: [
+                                landingUser.accountNumber1,
+                                landingUser.accountNumber2,
+                                landingUser.accountNumber3,
+                                landingUser.accountNumber4,
+                            ]
+                        },
+						entry_date: {
+							[Op.gt]: moment().startOf('year').toDate()
+						}
+                    },
+                    order: [["entry_date", "DESC"]]
+                });
+            } catch (err) {
+                console.error(err);
+            }
+			
+			// query orders for the quarter
+			try {
+                // find all orders that belong to user and sort them by date
+                quarterlyOrders = await Order.findAll({
+                    where: {
+                        customer_code: {
+                            [Op.or]: [
+                                landingUser.accountNumber1,
+                                landingUser.accountNumber2,
+                                landingUser.accountNumber3,
+                                landingUser.accountNumber4,
+                            ]
+                        },
+						entry_date: {
+							[Op.gt]: moment().startOf('quarter').toDate()
 						}
                     },
                     order: [["entry_date", "DESC"]]
@@ -174,6 +226,8 @@ module.exports = async (req, res) => {
 
             res.render("landingpage", {
                 orders: orders,
+				yearlyOrders: yearlyOrders,
+				quarterlyOrders: quarterlyOrders,
                 cookies: temporaryHeaderObject
             });
         }

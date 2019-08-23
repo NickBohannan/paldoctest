@@ -56,7 +56,7 @@ module.exports = async (req, res) => {
 									{patient_name: finalName + " "}
 								]
 							},
-							order: [['actual_ship_date', 'DESC']]
+							order: [['entry_date', 'DESC']]
 						})
 					
 						if (orders[0] == null) {
@@ -72,24 +72,6 @@ module.exports = async (req, res) => {
 					} catch(err) {
 						console.error(err);
 					}
-                    break;
-                case "ordernumber":
-                    Order.findAll({ where: { order_no: req.body.searchfield } })
-                        .then(orders => {
-                            if (orders[0] == null) {
-                                res.render("nosearchresults", {
-                                    cookies: req.cookies
-                                });
-                            } else {
-                                res.render("searchresults", {
-                                    orders: orders,
-                                    cookies: req.cookies
-                                });
-                            }
-                        })
-                        .catch(err => {
-                            console.log(err);
-                        });
                     break;
                 case "dateshipped":
                     let dateArray = req.body.searchfield.split("/")
@@ -121,7 +103,8 @@ module.exports = async (req, res) => {
                                         [Op.gt]: dateString,
                                         [Op.lt]: moment(dateString).add(3, 'days')
                                     }
-                                }
+                                },
+								order: [['entry_date', 'DESC']]
                             })
 
                         if (orders == undefined || orders[0] == null) {

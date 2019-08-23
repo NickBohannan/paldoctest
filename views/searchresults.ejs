@@ -29,7 +29,7 @@
                     <!-- <div class="text-box b note">Notes</div> -->
                 </div>
                 <% orders.forEach((order) => { %>
-                <% let url = "orders/" + order.order_no %>
+                <% let url = "orders/" + order.order_no_ext %>
                 <div class="order-row">
                     <div id="view-button-container">
                         <a href=<%=url %>>
@@ -37,7 +37,7 @@
                         </a>
                     </div>
                     <div class="text-box order-number">
-                        <%= order.order_no %>
+                        <%= order.order_no_ext %>
                     </div>
                     <div class="text-box">
                         <%= order.product_name %>

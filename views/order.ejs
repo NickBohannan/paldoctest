@@ -25,11 +25,11 @@
                 <div class="order-ship-note-container">
                     <div class="shipping-container">
                         <div class="order-product-container">
-                            <div class="order-column">
+                            <div class="order-column-left">
                                 <div class="order-product-title">Order Number</div>
-                                <div class="order-data"><%= order.order_no %></div>
+                                <div class="order-data"><%= order.order_no_ext %></div>
                             </div>
-                            <div class="order-column">
+                            <div class="order-column-right">
                                 <div class="order-product-title">Product Type</div>
                                 <div class="order-data">
                                     <%= order.product_type %>
@@ -39,18 +39,59 @@
 						<div id="workflow-container">
 							<div id="workflow-text">
 								<% if (order.actual_ship_date.toString().substring(11, 15) !== "1899") { %>
-								<i class="fas fa-truck-moving"></i>
-								<%= "Your order has been shipped."  %>
+								<div class="tracker-graphic-container">
+									<i class="fas fa-clipboard" style="color:grey;"></i>
+									<hr/>
+									<i class="fas fa-tools" style="color:grey;"></i>
+									<hr/>
+									<i class="fas fa-search" style="color:grey;"></i>
+									<hr/>
+									<i class="fas fa-truck-moving"></i>
+								</div>
+								<%= "Your order has shipped."  %>
 								<% } else if (qcPreShip == true) { %>
-								<i class="fas fa-search"></i>
+								<div class="tracker-graphic-container">
+									<i class="fas fa-clipboard" style="color:grey;"></i>
+									<hr/>
+									<i class="fas fa-tools" style="color:grey;"></i>
+									<hr/>
+									<i class="fas fa-search"></i>
+									<hr/>
+									<i class="fas fa-truck-moving" style="color:grey;"></i>
+								</div>
 								<%= "Your order is in Quality Control and about ready to ship." %>
 								<% } else if (manufacturing == true) { %>
-								<i class="fas fa-tools"></i>
+								<div class="tracker-graphic-container">
+									<i class="fas fa-clipboard" style="color:grey;"></i>
+									<hr/>
+									<i class="fas fa-tools"></i>
+									<hr/>
+									<i class="fas fa-search" style="color:grey;"></i>
+									<hr/>
+									<i class="fas fa-truck-moving" style="color:grey;"></i>
+								</div>
 								<%= "Your order is being manufactured." %>
 								<% } else if (order.entry_date) { %>
-								<i class="fas fa-clipboard"></i>
+								<div class="tracker-graphic-container">
+									<i class="fas fa-clipboard"></i>
+									<hr/>
+									<i class="fas fa-tools" style="color:grey;"></i>
+									<hr/>
+									<i class="fas fa-search" style="color:grey;"></i>
+									<hr/>
+									<i class="fas fa-truck-moving" style="color:grey;"></i>
+								</div>
 								<%= "Your order has been entered and sized and is heading to manufacturing." %>
 								<% } else { %>
+								<div class="tracker-graphic-container">
+									<i class="fas fa-clipboard" style="color:grey;"></i>
+									<hr/>
+									<i class="fas fa-tools" style="color:grey;"></i>
+									<hr/>
+									<i class="fas fa-search" style="color:grey;"></i>
+									<hr/>
+									<i class="fas fa-truck-moving" style="color:grey;"></i>
+								</div>
 								<%= "No tracking data available." %>
 								<% } %>   
 							</div>
@@ -79,7 +120,7 @@
                                     Date Entered:
                                 </div>
                             </div>
-                            <div class="order-values">
+                            <div class="order-values-1">
                                 <div class="order-value-element">
                                     <%= order.order_no %>
                                 </div>
@@ -138,7 +179,7 @@
                             >
                                 <%= order.order_no %>
                             </a> -->
-                            <div class="order-values">
+                            <div class="order-values-2">
                                 <div class="order-value-element">
                                     <%= order.ship_to_addr1 %> <%=
                                     order.ship_to_addr2 %> <%=

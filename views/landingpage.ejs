@@ -39,7 +39,7 @@
                         </div>
 							<% orders.forEach(order => { %>
 							<% if (order.hold_code !== 0) { %>
-							<% let url = "orders/" + order.order_no %>
+							<% let url = "orders/" + order.order_no_ext %>
 							<div class="row support-list-element support-check">
 								<a href=<%=url %>>
 									<div id="support-ticket-number"><%= order.patient_name %></div>
@@ -56,13 +56,31 @@
 								<% if (order.hold_code == 4) { %>
 									<div id="support-ticket-status">Sales Storage Hold</div>
 								<% } %>
-								<div id="support-product-type"><%= order.product_name %></div>
+								<div id="support-product-type">
+									<% if (order.product_name == "") { %>
+									Awaiting Scan
+									<% } else { %> 
+									<%= order.product_name %>
+									<% } %>
+								</div>
 							</div>
                         <% }}) %>
                     </div>
                 </div>
             </div>
             <div class="landing-order-container">
+				<div id="total-orders-container">
+					<div class="total-row">
+						<div class="total-title">Monthly Total</div>
+						<div class="total-title">Quarterly Total</div>
+						<div class="total-title">Annual Total</div>
+					</div>
+					<div class="total-row">
+						<div id="past-month" class="total-value"></div>
+						<div id="past-quarter" class="total-value"><%= quarterlyOrders.length %></div>
+						<div class="total-value"><%= yearlyOrders.length %></div>
+					</div>
+				</div>
                 <div class="landing-order-title">
                     Your 10 Most Recent Orders
                 </div>
@@ -82,7 +100,7 @@
                     <%  loopNum = 10 %>    
                     <% } %>
                     <% for (let i = 0; i < loopNum; i++) { %>
-                    <% let url = "orders/" + orders[i].order_no %>
+                    <% let url = "orders/" + orders[i].order_no_ext %>
                     <div class="order-row">
                         <div id="view-button-container">
                             <a href=<%=url %>>
@@ -90,10 +108,14 @@
                             </a>
                         </div>
                         <div class="text-box order-number">
-                            <%= orders[i].order_no %>
+                            <%= orders[i].order_no_ext %>
                         </div>
                         <div class="text-box">
+							<% if (orders[i].product_name == "") { %>
+							Awaiting Scan
+							<% } else { %> 
                             <%= orders[i].product_name %>
+							<% } %>
                         </div>
                         <div class="text-box patient">
                             <%= orders[i].patient_name %>
@@ -135,6 +157,8 @@
             Cookies.get('novOrders'),
             Cookies.get('decOrders')
         ]
+		
+		
 
         for (let j=0;j<12-currentMonth;j++) {
             let labelPopValue = labels.pop()
@@ -143,7 +167,6 @@
             let dataPopValue = data.pop()
             data.unshift(dataPopValue)
         }
-
 
         if (document.querySelector(".support-check") == null) {
             let newElement = document.createElement("div")
@@ -154,7 +177,7 @@
             beforeDiv.parentNode.insertBefore(newElement, beforeDiv.nextSibling)
         }
 
-        var ctx = document.getElementById('myChart').getContext('2d');
+        var ctx = document.getElementById('myChart').getContext('2d')
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
@@ -176,7 +199,10 @@
                     }]
                 }
             }
-        });
+        })
+
+		document.getElementById("past-month").innerHTML = data[data.length-1]
+		
     </script>
 </body>
 

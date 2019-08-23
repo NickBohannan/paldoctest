@@ -15,8 +15,9 @@ module.exports = async (req, res) => {
 			let qcPreShip = false
 			
             try {
+				console.log(req.params)
                 order = await Order.findOne({
-                    where: { order_no: req.params.order_no }
+                    where: { order_no_ext: req.params.order_no_ext }
                 });
   
 				workflow = await Workflow.findAll({

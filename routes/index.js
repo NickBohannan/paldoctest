@@ -28,7 +28,7 @@ router.post("/signup", signup);
 
 router.get("/", landingPage);
 
-router.get("/orders/:order_no", singleOrder);
+router.get("/orders/:order_no_ext", singleOrder);
 
 router.get("/forgotpass", (req, res) => {
     res.render("forgotpass", {

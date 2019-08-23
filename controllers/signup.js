@@ -35,6 +35,7 @@ module.exports = async (req, res) => {
                     email: req.body.email
                 }
             })
+			console.log(testUserEmail)
             if (testUserEmail.email == req.body.email) {
                 res.render("error", {
                     errorText: "Sorry, a user with that email address already exists"
@@ -61,6 +62,8 @@ module.exports = async (req, res) => {
         } catch (err) {
             console.error(err);
         }
-        res.render("login");
+        res.render("message", {
+			messageText: "You have successfully created an account. Please click below to return to the login page."
+		});
     }
 }

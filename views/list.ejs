@@ -47,7 +47,7 @@
                     <!-- <div class="text-box b note">Notes</div> -->
                 </div>
                 <% for (let i=0; i < orders.length; i++) { %>
-                <% let url = "/orders/" + orders[i].order_no %>
+                <% let url = "/orders/" + orders[i].order_no_ext %>
                 <div class="order-row">
                     <div id="view-button-container">
                         <a href=<%=url %>>
@@ -55,10 +55,14 @@
                         </a>
                     </div>
                     <div class="text-box order-number">
-                        <%= orders[i].order_no %>
+                        <%= orders[i].order_no_ext %>
                     </div>
                     <div class="text-box">
-                        <%= orders[i].product_name %>
+						<% if (orders[i].product_name == "") { %>
+						Awaiting Scan
+						<% } else { %> 
+						<%= orders[i].product_name %>
+						<% } %>
                     </div>
                     <div class="text-box patient">
                         <%= orders[i].patient_name %>

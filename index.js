@@ -20,6 +20,7 @@ app.use('/', routes)
 
 const port = process.env.PORT || 8080
 
+app.enable('trust proxy')
 app.set('port', port)
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))

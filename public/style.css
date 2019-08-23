@@ -263,7 +263,7 @@ a.searchtype {
 
 .row #widget-row {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     margin-top: 20px;
 }
 
@@ -271,6 +271,7 @@ a.searchtype {
     position: relative;
     height: 50vh;
     width: 50vh;
+	margin: 0 30px 0 0;
 }
 
 body {
@@ -282,9 +283,8 @@ body {
 .support-container {
     border: 2px solid #102245;
     height: calc(50vh - 25px);
-    margin-top: 25px;
+    margin: 25px 0 0 30px;
     width: 60vh;
-    border-radius: 10px;
 	overflow: auto;
 }
 
@@ -339,7 +339,7 @@ body {
 
 .order-product-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     border: 2px solid #102245;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -350,6 +350,14 @@ body {
     background-color: #102245;
     /* box-shadow: 5px 5px 5px rgb(92, 92, 92); */
 }
+
+.order-column-left {
+	margin-right: 25px;
+}	
+
+.order-column-right {
+	margin-left: 25px;
+}	
 
 .shipping-container {
     border: 2px solid #102245;
@@ -366,22 +374,33 @@ body {
 
 .grid-container {
     font-size: 20px;
-    height: 160px;
-    width: 90%;
-    display: grid;
-    grid-template-columns: 200px;
-    margin-left: 125px;
-    margin-bottom: 35px;
+    height: 200px;
+    width: 100%;
+	display: flex;
+	flex-direction: row;
 }
 
 .grid-container-2 {
     font-size: 20px;
     height: 200px;
-    width: 90%;
-    display: grid;
-    grid-template-columns: 200px;
-    margin-left: 125px;
+    width: 100%;
+	display: flex;
+	flex-direction: row;
     margin-bottom: 25px;
+}
+
+.order-labels {
+	margin-left: 130px;
+}
+
+.order-values-1 {
+	margin-left: 50px;
+	margin-top: 15px;
+}
+
+.order-values-2 {
+	margin-left: 30px;
+	margin-top: 15px;
 }
 
 #forgot-link {
@@ -829,7 +848,6 @@ form #search-form {
 }
 
 .welcome-container {
-    position: absolute;
     z-index: 7;
     border: 2px solid grey;
     border-bottom: none;
@@ -1071,6 +1089,7 @@ form #search-form {
 	border: 2px solid #102245;
 	padding: 10px;
 	background-color: #bfd7ff;
+	border-radius: 10px;
 }
 
 #workflow-text i {
@@ -1078,3 +1097,52 @@ form #search-form {
 	color: #102245;
 	margin-bottom: 10px;
 }
+
+.tracker-graphic-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+hr {
+    display: block;
+	width: 30px;
+    height: 1px;
+    border: 0;
+    border-top: 5px dotted #000;
+    margin: 25px 8px;
+}
+
+#total-orders-container {
+	width: 900px;
+	border: 2px solid #102245;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 50px;
+	border-radius: 5px;
+}
+
+.total-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.total-title {
+	width: 300px;
+	padding: 5px 0;
+	text-align: center;
+	color: white;
+	background-color: #102245;
+	vertical-align: center;
+	font-size: 20px;
+}
+
+.total-value {
+	width: 300px;
+	text-align: center;
+	vertical-align: center;
+	font-size: 32px;
+	padding: 5px;
+	border: 1px solid #102245;
+}
+
