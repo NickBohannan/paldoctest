@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const path = require('path')
 const ejsLint = require('ejs-lint')
+// const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
 
 const routes = require('./routes/index')
 
@@ -12,6 +13,7 @@ const User = require('./models/user')
 
 const app = express()
 
+// app.use(redirectToHTTPS())
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -20,7 +22,7 @@ app.use('/', routes)
 
 const port = process.env.PORT || 8080
 
-app.enable('trust proxy')
+
 app.set('port', port)
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
@@ -28,8 +30,6 @@ app.set('views', path.join(__dirname, 'views'))
 app.listen(port, () => {
     console.log('Server listening on port ' + port)
 })
-
-console.log(process.env.HOME)
 
 Order.sync()
 User.sync()

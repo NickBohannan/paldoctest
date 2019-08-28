@@ -12,6 +12,10 @@ const portal = require('../controllers/portal')
 const getSearch = require('../controllers/getsearch')
 const postSearch = require('../controllers/postsearch')
 const all = require('../controllers/all')
+const confirmReorder = require('../controllers/confirmreorder')
+const sendReorder = require('../controllers/sendreorder')
+const getReorderSearch = require('../controllers/getreordersearch')
+const postReorderSearch = require('../controllers/postreordersearch')
 
 // Route List
 router.get("/login", (req, res) => {
@@ -29,6 +33,14 @@ router.post("/signup", signup);
 router.get("/", landingPage);
 
 router.get("/orders/:order_no_ext", singleOrder);
+
+router.get("/confirmreorder/:order_no_ext", confirmReorder);
+
+router.get("/sendreorder/:order_no_ext", sendReorder);
+
+router.get("/reordersearch", getReorderSearch)
+
+router.post("/reordersearch", postReorderSearch)
 
 router.get("/forgotpass", (req, res) => {
     res.render("forgotpass", {

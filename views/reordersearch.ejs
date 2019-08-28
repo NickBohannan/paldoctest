@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>PAL Order Portal Search</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+</head>
+
+<body>
+    <%- include('header', {
+        cookies: cookies
+    }) %>
+    <div class="row">
+        <%- include('sidebar') %>
+        <div class="all-order-container">
+            <div>
+                Search Orders
+            </div>
+            <div class="search-form-container">
+                <form method="post" id="search-form" action="/reordersearch">
+                    <input type="text" id="search-bar" name="searchfield" placeholder="Search">
+                    <div class="radio-container">
+                        <div class="radio-row-container">
+                            <div class="row radio-row">
+                                <input type="radio" id="radio-input" name="searchradio" value="patientname" />
+                                <label for="radio-input">Patient Name*</label>
+                            </div>
+                        </div>
+                        <div class="radio-row-container">
+                            <div class="row radio-row">
+                                <input type="radio" id="radio-input" name="searchradio" value="dateshipped" />
+                                <label for="radio-input">Date Shipped (MM/DD/YYYY)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" id="search-button" value="Search">
+                </form>
+            </div>
+            <div id="pt-asterisk">* - If patient name search results in zero results, try adding a middle initial without a period or enter only the last name.</div>
+        </div>
+    </div>
+    <%- include('footer') %>
+</body>
+
+</html>

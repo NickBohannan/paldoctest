@@ -62,35 +62,35 @@ module.exports = async (req, res) => {
         }
 
         // send email with link to change password (URL with token as part of query string)
-        try {
-            let transporter = nodemailer.createTransport({
-                host: "smtp.gmail.com",
-                port: 587,
-                secure: false, 
-                auth: {
-                  user: "n.bohannan@palhealth.com", 
-                  pass: process.env.EMAILPASS 
-                }
-            })
-            let info = await transporter.sendMail({
-                from: 'n.bohannan@palhealth.com', 
-                to: passUser.email, 
-                subject: "Password Reset Link - PAL Provider Portal",
-                html: `Hello ${passUser.firstName + " " + passUser.lastName},<br><br>
+		try {
+			let transporter = nodemailer.createTransport({
+				host: "smtp.gmail.com",
+				port: 587,
+				secure: false, 
+				auth: {
+				  user: "n.bohannan@palhealth.com", 
+				  pass: process.env.EMAILPASS 
+				}
+			})
+			let info = await transporter.sendMail({
+				from: 'n.bohannan@palhealth.com', 
+				to: passUser.email, 
+				subject: "Password Reset Link - PAL Provider Portal",
+				html: `Hello ${passUser.firstName + " " + passUser.lastName},<br><br>
 
-                Please click the following URL to change your password:<br><br>
+				Please click the following URL to change your password:<br><br>
 
-                ${cpURL}<br><br>
-                
-                Thank you,<br> 
-                PAL Health Technologies`, 
-            })
+				${cpURL}<br><br>
+				
+				Thank you,<br> 
+				PAL Health Technologies`, 
+			})
 
-            // send confirmation message in browser
-            console.log("Message sent: %s", info.messageId)
-            res.send(`An email has been sent to ${passUser.email} with a link to change your password. Please close tab.`)
-        } catch (err) {
-            console.error(err)
-        }
+			// send confirmation message in browser
+			console.log("Message sent: %s", info.messageId)
+			res.send(`An email has been sent to ${passUser.email} with a link to change your password. Please close tab.`)
+		} catch (err) {
+			console.error(err)
+		}
     }
 }

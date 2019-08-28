@@ -1146,3 +1146,38 @@ hr {
 	border: 1px solid #102245;
 }
 
+#reorder-container {
+	font-family: "Roboto", sans-serif;
+	font-size: 20px;
+	width: 650px;
+	height: 150px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#reorder-text {
+	margin-top: 20px;
+	max-width: 80%;
+	text-align: center;
+}
+
+
+#reorder-button {
+	text-align: center;
+	margin-top: 10px;
+	text-decoration: none;
+	width: 200px;
+	height: 60px;
+	background-color: #102245;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+}
+
+#reorder-container a {
+	text-decoration: none;
+}
+

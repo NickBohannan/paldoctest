@@ -1,0 +1,66 @@
+!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>PAL Order Portal Search Results</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+</head>
+
+<body>
+    <%- include('header', {
+        cookies: cookies
+    }) %>
+    <div class="row">
+        <%- include('sidebar') %>
+        <div class="all-order-container">
+            <div class="landing-order-title">
+                Search Results
+            </div>
+            <div class="main-list-container">
+                <div class="order-row legend">
+                    <div class="text-box b noview"></div>
+                    <div class="text-box b name order-number">Order Number</div>
+                    <div class="text-box b">Product</div>
+                    <div class="text-box b patient">Patient Name</div>
+                    <div class="text-box b dest">Shipping Method</div>
+                    <div class="text-box b">Date Entered</div>
+                    <!-- <div class="text-box b note">Notes</div> -->
+                </div>
+                <% orders.forEach((order) => { %>
+                <% let url = "confirmreorder/" + order.order_no_ext %>
+                <div class="order-row">
+                    <div id="view-button-container">
+                        <a href=<%=url %>>
+                            <div id="view-button">Reorder</div>
+                        </a>
+                    </div>
+                    <div class="text-box order-number">
+                        <%= order.order_no_ext %>
+                    </div>
+                    <div class="text-box">
+                        <%= order.product_name %>
+                    </div>
+                    <div class="text-box patient">
+                        <%= order.patient_name %>
+                    </div>
+                    <div class="text-box dest">
+                        <%= order.shipping_method %>
+                    </div>
+                    <div class="text-box">
+                        <% let dateString = order.entry_date.toString().substring(4, 21) + " " + "CDT" %>
+                        <%= dateString %>
+                    </div>
+                    <!-- <div class="text-box note">
+                        <%= order.note %>
+                    </div> -->
+                </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+    <%- include('footer') %>
+</body>
+
+</html>
