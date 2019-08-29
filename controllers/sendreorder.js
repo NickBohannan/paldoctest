@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
 		let info = await transporter.sendMail({
 			from: 'n.bohannan@palhealth.com', 
 			to: `customerservice@palhealth.com, ${req.cookies.userEmail}`, 
-			subject: "Reorder from PAL Provider Portal",
+			subject: "TESTING PLEASE DISREGARD Reorder from PAL Provider Portal",
 			html: `Hello Customer Service Team,<br><br>
 
 			Please create a reorder for the following: ` + order.order_no_ext + `

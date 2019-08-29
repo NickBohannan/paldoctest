@@ -16,6 +16,7 @@ const confirmReorder = require('../controllers/confirmreorder')
 const sendReorder = require('../controllers/sendreorder')
 const getReorderSearch = require('../controllers/getreordersearch')
 const postReorderSearch = require('../controllers/postreordersearch')
+const adminUpdate = require('../controllers/admin')
 
 // Route List
 router.get("/login", (req, res) => {
@@ -63,5 +64,11 @@ router.get("/search", getSearch);
 router.get("/list/:page_no", all);
 
 router.post("/search", postSearch);
+
+router.get("/admin", (req, res) => {
+	res.render("admin")
+})
+
+router.post("/admin", adminUpdate)
 
 module.exports = router;
