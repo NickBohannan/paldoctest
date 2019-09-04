@@ -223,7 +223,7 @@ a.searchtype {
     background-color: #102245;
     border-top: 1px solid white;
     min-width: 14rem;
-    min-height: calc(100vh - 100px);
+    min-height: 100%;
 }
 
 .sidebar-element-container {
@@ -308,7 +308,8 @@ body {
 }
 
 .all-order-container {
-    width: calc(100% - 14rem);
+    width: 100vw;
+	height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -946,8 +947,7 @@ form #search-form {
 }
 
 .footer-container {
-    margin-left: 14rem;
-    width: calc(100% - 14rem);
+    width: 100%;
     height: 50px;
     background-color: #3d3d3d;
     font-size: 20px;

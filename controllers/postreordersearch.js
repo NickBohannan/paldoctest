@@ -74,6 +74,7 @@ module.exports = async (req, res) => {
 					}
                     break;
                 case "dateshipped":
+					// some of this is redundant now that we're using moment.js. Will remove.
                     let dateArray = req.body.searchfield.split("/")
                     let lastElement = dateArray.pop()
                     dateArray.unshift(lastElement)

@@ -6,6 +6,7 @@ module.exports = async (req, res) => {
 	
 	let order
 	
+	// finds the order you wish to reorder
 	try {
 		order = await Order.findOne({
 			where: { order_no_ext: req.params.order_no_ext }
@@ -14,6 +15,7 @@ module.exports = async (req, res) => {
 		console.error(err)
 	}
 	
+	// send email to customer service team with above order in body.
 	try {
 		let transporter = nodemailer.createTransport({
 			host: "smtp.gmail.com",

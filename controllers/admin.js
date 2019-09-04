@@ -1,5 +1,7 @@
 const User = require("../models/user");
 
+// This module allows users with knowledge of the admin password to change their account number bindings to view whichever account they choose.
+
 module.exports = async (req, res) => {
 	if (req.body.password !== process.env.ADMINPASS) {
 		res.render("error", {

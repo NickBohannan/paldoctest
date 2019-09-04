@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+// This is the route index for the whole portal. Controllers listed below are the logic for all the routes. Please see corresponding controllers for site logic. 
+
 // Grabbing Controllers
 const forgotPass = require('../controllers/forgotpass')
 const changePass = require('../controllers/changepass')
