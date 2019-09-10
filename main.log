@@ -1,0 +1,40 @@
+{"level":"info","message":"New User Login: n.bohannan@palhealth.com - IP Address: ::1 - Fri Sep 06 2019 07:02:12 GMT-0700"}
+{"level":"warn","message":"User n.bohannan@palhealth.com (::1) has accessed the admin page and has successfully changed account numbers!"}
+{"level":"warn","message":"User n.bohannan@palhealth.com (::1) has accessed the admin page and has successfully changed account numbers!"}
+{"level":"warn","message":"User n.bohannan@palhealth.com (::1) has accessed the admin page and has successfully changed account numbers!"}
+{"level":"info","message":"New User Login: n.bohannan@palhealth.com - IP Address: ::1 - Fri Sep 06 2019 07:19:20 GMT-0700"}
+{"level":"info","message":"New User Login: n.bohannan@palhealth.com - IP Address: ::1 - Fri Sep 06 2019 07:50:48 GMT-0700"}
+{"level":"info","message":"New User Login: n.bohannan@palhealth.com - IP Address: 10.60.0.202:50569 - Fri Sep 06 2019 07:57:26 GMT-0700"}
+{"level":"warn","message":"Fri Sep 06 2019 08:19:58 GMT-0700 - User n.bohannan@palhealth.com (::1) has accessed the admin page and has successfully accessed the following account numbers: 0005070000, , , "}
+{"level":"warn","message":"Fri Sep 06 2019 08:21:56 GMT-0700 - User n.bohannan@palhealth.com (::1) has accessed the admin page and has successfully accessed the following account numbers: 0005070000, , , "}
+{"level":"warn","message":"Fri Sep 06 2019 08:24:28 GMT-0700 - User n.bohannan@palhealth.com (10.60.0.202:50651) has accessed the admin page and has successfully accessed the following account numbers: 0005070000, , , "}
+{"level":"info","message":"New User Login: n.bohannan@palhealth.com - IP Address: 10.60.0.202:50696 - Fri Sep 06 2019 08:40:30 GMT-0700"}
+{"level":"warn","message":"Fri Sep 06 2019 09:09:37 GMT-0700 - User n.bohannan@palhealth.com (10.60.0.202:50861) has accessed the admin page and has successfully accessed the following account numbers: 0000879604, , , "}
+{"level":"info","message":"New User Login: n.bohannan@palhealth.com - IP Address: 10.60.0.202:50919 - Fri Sep 06 2019 09:22:09 GMT-0700"}
+{"level":"info","message":"New User Login: n.bohannan@palhealth.com - IP Address: 10.60.0.238:52024 - Fri Sep 06 2019 09:24:05 GMT-0700"}
+{"level":"info","message":"New User Login: n.bohannan@palhealth.com - IP Address: 10.60.0.202:51150 - Fri Sep 06 2019 09:57:42 GMT-0700"}
+{"level":"info","message":"New User Login: n.bohannan@palhealth.com - IP Address: 10.60.0.202:51150 - Fri Sep 06 2019 09:59:25 GMT-0700"}
+{"level":"info","message":"New User Login: n.bohannan@palhealth.com - IP Address: 10.60.0.202:51796 - Fri Sep 06 2019 11:35:09 GMT-0700"}
+{"level":"info","message":"New User Login: n.bohannan@palhealth.com - IP Address: 10.60.0.202:51850 - Fri Sep 06 2019 11:48:26 GMT-0700"}
+{"level":"info","message":"Fri Sep 06 2019 11:54:23 GMT-0700 - a new account has been created. User Email: x@x.com - Name: x x - Accounts: 0002792401, 0002792404, , "}
+{"level":"info","message":"New User Login: x@x.com - IP Address: 10.60.0.202:51870 - Fri Sep 06 2019 11:54:53 GMT-0700"}
+{"level":"info","message":"New User Login: n.bohannan@palhealth.com - IP Address: 10.60.0.202:52033 - Fri Sep 06 2019 12:24:56 GMT-0700"}
+{"level":"info","message":"New User Login: n.bohannan@palhealth.com - IP Address: 10.60.0.202:52033 - Fri Sep 06 2019 12:26:05 GMT-0700"}
+{"level":"info","message":"New User Login: x@x.com - IP Address: undefined - Fri Sep 06 2019 12:28:02 GMT-0700"}
+{"level":"info","message":"New User Login: n.bohannan@palhealth.com - IP Address: 10.60.0.202:52250 - Fri Sep 06 2019 13:21:30 GMT-0700"}
+{"level":"info","message":"Fri Sep 06 2019 13:22:33 GMT-0700 - user n.bohannan@palhealth.com (10.60.0.202:52250) has requested a passoword reset and email has been sent."}
+{"level":"info","message":"Fri Sep 06 2019 13:30:02 GMT-0700 - user n.bohannan@palhealth.com (10.60.0.202:52271) has requested a passoword reset and email has been sent."}
+{"level":"info","message":"Fri Sep 06 2019 13:30:45 GMT-0700 - user n.bohannan@palhealth.com (10.60.0.202:52271) has successfully changed passwords."}
+{"level":"info","message":"New User Login: n.bohannan@palhealth.com - IP Address: 10.60.0.202:52271 - Fri Sep 06 2019 13:30:58 GMT-0700"}
+{"level":"info","message":"New User Login: x@x.com - IP Address: undefined - Fri Sep 06 2019 16:21:50 GMT-0700"}
+{"level":"info","message":"New User Login: sean@palhealth.com - IP Address: 10.60.0.122:59269 - Mon Sep 09 2019 05:43:40 GMT-0700"}
+{"level":"info","message":"New User Login: n.bohannan@palhealth.com - IP Address: 10.60.0.202:57739 - Mon Sep 09 2019 10:50:16 GMT-0700"}
+{"level":"info","message":"Tue Sep 10 2019 08:54:07 GMT-0700 - a new account has been created. User Email: n.bohannan@palhealth.com - Name: Nick Bohannan - Username: jiva86 - Accounts: 0333388401, , , "}
+{"level":"info","message":"New User Login: jiva86 - IP Address: undefined - Tue Sep 10 2019 08:54:19 GMT-0700"}
+{"level":"warn","message":"Tue Sep 10 2019 08:55:19 GMT-0700 - User jiva86 (n.bohannan@palhealth.com) (undefined) has accessed the admin page and has successfully accessed the following account numbers: 0005070000, , , "}
+{"level":"info","message":"New User Login: jiva86 - IP Address: undefined - Tue Sep 10 2019 09:13:04 GMT-0700"}
+{"level":"info","message":"New User Login: jiva86 - IP Address: undefined - Tue Sep 10 2019 09:23:31 GMT-0700"}
+{"level":"info","message":"New User Login: jiva86 - IP Address: undefined - Tue Sep 10 2019 11:02:58 GMT-0700"}
+{"level":"info","message":"New User Login: jiva86 - IP Address: undefined - Tue Sep 10 2019 11:03:15 GMT-0700"}
+{"level":"info","message":"New User Login: jiva86 - IP Address: undefined - Tue Sep 10 2019 11:29:15 GMT-0700"}
+{"level":"info","message":"New User Login: jiva86 - IP Address: 10.60.0.202:50376 - Tue Sep 10 2019 14:26:54 GMT-0700"}

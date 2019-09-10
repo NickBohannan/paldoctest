@@ -1,15 +1,17 @@
-const nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer")
 const Sequelize = require('sequelize')
-
-const User = require("../models/user");
 const jwt = require('jsonwebtoken')
+const moment = require('moment')
+
+const User = require("../models/user")
+const logger = require('../logger.js')
 
 const Op = Sequelize.Op
 
 module.exports = async (req, res) => {
 
     // handling missing fields
-    if (req.body.email == '' || req.body.accountNumber == '') {
+    if (req.body.username == '' || req.body.accountNumber == '') {
         res.render("error", {
             errorText: "Please fill out both fields to receive an email with instructions to change your password."
         })
@@ -17,7 +19,7 @@ module.exports = async (req, res) => {
     }
 
     // gathering info for JSON web token
-    const cpPayload = { user: req.body.email }
+    const cpPayload = { user: req.body.username }
     const cpOptions = { expiresIn: '24h' }
     const cpSecret = process.env.JWT_SECRET
 
@@ -25,15 +27,16 @@ module.exports = async (req, res) => {
     const cpToken = jwt.sign(cpPayload, cpSecret, cpOptions)
 
     // change password URL with token as past of query string
-    let cpURL = `portal.palhealth.com:8080/changepass?token=${cpToken}`
+    let cpURL = `https://portal.palhealth.com/changepass?token=${cpToken}`
 
     let passUser
+    let userIP = req.headers['x-forwarded-for']
 
     // find the user currently logged in
     try {
         passUser = await User.findOne({
             where: {
-                email: req.body.email,
+                username: req.body.username,
                 [Op.or]: [
                     {accountNumber1: req.body.accountNumber},
                     {accountNumber2: req.body.accountNumber},
@@ -87,7 +90,13 @@ module.exports = async (req, res) => {
 			})
 
 			// send confirmation message in browser
-			console.log("Message sent: %s", info.messageId)
+            console.log("Message sent: %s", info.messageId)
+            
+            logger.log({
+                level: 'info',
+                message: `${moment()} - user ${passUser.email} (${userIP}) has requested a password reset and email has been sent.`
+            })
+
 			res.send(`An email has been sent to ${passUser.email} with a link to change your password. Please close tab.`)
 		} catch (err) {
 			console.error(err)

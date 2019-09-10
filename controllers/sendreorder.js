@@ -1,10 +1,13 @@
 const nodemailer = require('nodemailer')
+const moment = require('moment')
 
-const Order = require("../models/order");
+const Order = require("../models/order")
+const logger = require('../logger.js')
 
 module.exports = async (req, res) => {
 	
 	let order
+	let userIP = req.headers['x-forwarded-for']
 	
 	// finds the order you wish to reorder
 	try {
@@ -22,13 +25,14 @@ module.exports = async (req, res) => {
 			port: 587,
 			secure: false, 
 			auth: {
-			  user: "n.bohannan@palhealth.com", 
-			  pass: process.env.EMAILPASS 
+			  user: "n.bohannan@palhealth.com",
+			  password: process.env.EMAILPASS
 			}
 		})
+		
 		let info = await transporter.sendMail({
-			from: 'n.bohannan@palhealth.com', 
-			to: `customerservice@palhealth.com, ${req.cookies.userEmail}`, 
+			from: 'portalsupport@palhealth.com', 
+			to: `${req.cookies.userEmail}`, 
 			subject: "TESTING PLEASE DISREGARD Reorder from PAL Provider Portal",
 			html: `Hello Customer Service Team,<br><br>
 
@@ -37,7 +41,12 @@ module.exports = async (req, res) => {
 			This individual is a patient of ` + order.customer_name + `.
 			<br><br>
 			Thank you,<br> 
-			PAL Provider Portal`, 
+			PAL Provider Portal`
+		})
+
+		logger.log({
+			level: 'info',
+			message: `${moment()} - user ${req.cookies.userEmail} (${userIP}) has sent a reorder email for ${order.order_no_ext} to customer service.`
 		})
 
 		// send confirmation message in browser

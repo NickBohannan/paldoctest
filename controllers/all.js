@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
             try {
                 allUser = await User.findOne({
                     where: {
-                        email: req.cookies.userEmail
+                        username: req.cookies.username
                     }
                 })
             } catch (err) {

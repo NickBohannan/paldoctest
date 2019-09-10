@@ -25,7 +25,8 @@
     "nodemailer": "^6.3.0",
     "sequelize": "^6.0.0",
     "serve-favicon": "^2.5.0",
-    "tedious": "^6.2.0"
+    "tedious": "^6.2.0",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "ejs-lint": "^0.3.0",

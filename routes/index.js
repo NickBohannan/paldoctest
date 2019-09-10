@@ -19,6 +19,7 @@ const sendReorder = require('../controllers/sendreorder')
 const getReorderSearch = require('../controllers/getreordersearch')
 const postReorderSearch = require('../controllers/postreordersearch')
 const adminUpdate = require('../controllers/admin')
+const getChangePass = require('../controllers/getchangepass')
 
 // Route List
 router.get("/login", (req, res) => {
@@ -53,9 +54,7 @@ router.get("/forgotpass", (req, res) => {
 
 router.post("/forgotpass", forgotPass)
 
-router.get("/changepass", (req, res) => {
-    res.render("changepass")
-})
+router.get("/changepass", getChangePass) 
 
 router.post("/changepass", changePass)
 
