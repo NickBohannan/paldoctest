@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
 
         if (user == undefined) {
             res.render('error', {
-                errorText: `Sorry, this account has not been set up to reset it's password.`
+                errorText: `Sorry, the link you have used can only be used once. Please request a new link to be sent to your email via the forgot password link on the login page.`
             })
         } else {
             await user.update({

@@ -3,6 +3,7 @@ const moment = require('moment')
 
 const User = require("../models/user")
 const logger = require('../logger.js')
+const schema = require('../passvalidator.js')
 
 module.exports = async (req, res) => {
     if (req.body.firstName == '' ||
@@ -30,6 +31,10 @@ module.exports = async (req, res) => {
             errorText: "Sorry, you must enter an account number."
         })
         return 1
+    } else if (!schema.validate(req.body.password)) {
+        res.render("error", {
+            errorText: "Please make sure your password has at least one uppercase letter, one lowercase letter, one number and one symbol."
+        })
     } else {    
         try {
             let testUsername = await User.findOne({
@@ -37,7 +42,7 @@ module.exports = async (req, res) => {
                     username: req.body.username
                 }
             })
-			console.log(testUsername)
+            console.log(testUsername)
             if (testUsername.username == req.body.username) {
                 res.render("error", {
                     errorText: "Sorry, a user with that username already exists"

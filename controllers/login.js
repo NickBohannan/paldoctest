@@ -61,7 +61,7 @@ module.exports = async (req, res) => {
 
             // error if passwords don't match
             res.render("error", {
-                errorText: "Password mismatched with stored password. Please go back and try again."
+                errorText: "Password is incorrect. Please go back and try again."
             });
             return 1
         }

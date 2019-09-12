@@ -21,18 +21,18 @@ module.exports = async (req, res) => {
 	// send email to customer service team with above order in body.
 	try {
 		let transporter = nodemailer.createTransport({
-			host: "smtp.gmail.com",
-			port: 587,
+			host: "smtp-relay.gmail.com",
+			port: 25,
 			secure: false, 
 			auth: {
 			  user: "n.bohannan@palhealth.com",
-			  password: process.env.EMAILPASS
+			  pass: process.env.EMAILPASS 
 			}
 		})
 		
 		let info = await transporter.sendMail({
 			from: 'portalsupport@palhealth.com', 
-			to: `${req.cookies.userEmail}`, 
+			to: `n.bohannan@palhealth.com, ${req.cookies.userEmail}, j.robertson@palhealth.com`,
 			subject: "TESTING PLEASE DISREGARD Reorder from PAL Provider Portal",
 			html: `Hello Customer Service Team,<br><br>
 
@@ -46,7 +46,7 @@ module.exports = async (req, res) => {
 
 		logger.log({
 			level: 'info',
-			message: `${moment()} - user ${req.cookies.userEmail} (${userIP}) has sent a reorder email for ${order.order_no_ext} to customer service.`
+			message: `${moment()} - user ${req.cookies.username} (${req.cookies.userEmail}) (${userIP}) has sent a reorder email for ${order.order_no_ext} to customer service.`
 		})
 
 		// send confirmation message in browser

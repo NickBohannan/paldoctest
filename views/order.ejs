@@ -152,7 +152,13 @@
                         <div class="grid-container-2">
                             <div class="order-labels">
                                 <div class="order-label-element">
-                                    Street Address:
+                                    Address (Line 1):
+                                </div>
+                                <div class="order-label-element">
+                                    Address (Line 2):
+                                </div>
+                                <div class="order-label-element">
+                                    Address (Line 3):
                                 </div>
                                 <div class="order-label-element">
                                     City:
@@ -173,17 +179,28 @@
                                     Tracking Number:
                                 </div>
                             </div>
-                            <!-- <a
-                                href="https://www.fedex.com/en-us/home.html"
-                                class="shipping-data"
-                            >
-                                <%= order.order_no %>
-                            </a> -->
+
                             <div class="order-values-2">
                                 <div class="order-value-element">
-                                    <%= order.ship_to_addr1 %> <%=
-                                    order.ship_to_addr2 %> <%=
-                                    order.ship_to_addr3 %>
+                                    <% if (order.ship_to_addr1 !== '') { %>
+                                        <%= order.ship_to_addr1 %> 
+                                    <% } else { %>
+                                        N/A
+                                    <% } %>
+                                </div>
+                                <div class="order-value-element">
+                                    <% if (order.ship_to_addr2 !== '') { %>
+                                        <%= order.ship_to_addr2 %> 
+                                    <% } else { %>
+                                        N/A
+                                    <% } %>
+                                </div>
+                                <div class="order-value-element">
+                                    <% if (order.ship_to_addr3 !== '') { %>
+                                        <%= order.ship_to_addr3 %> 
+                                    <% } else { %>
+                                        N/A
+                                    <% } %>
                                 </div>
                                 <div class="order-value-element">
                                     <%= order.ship_to_city %>
@@ -227,19 +244,6 @@
 								<div id="reorder-button">Reorder</div>
 							</a>
 						</div>
-
-                        
-                        
-                        <!-- Invoices will be taken from Great Plains, not the production database -->
-
-                        <!-- <% if (order.total_invoice !== 0) { %>
-                          <div class="single-order-shipping-container-title">
-                              Total Invoice
-                          </div>
-                          <div id="single-order-invoice">
-                            $<%= order.total_invoice %>
-                          </div>
-                        <% } %> -->
 
                         <div class="note-container">
                             <div class="note-box">

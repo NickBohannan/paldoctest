@@ -11,7 +11,7 @@ const Op = Sequelize.Op
 module.exports = async (req, res) => {
 
     // handling missing fields
-    if (req.body.username == '' || req.body.accountNumber == '') {
+    if (req.body.username == '') {
         res.render("error", {
             errorText: "Please fill out both fields to receive an email with instructions to change your password."
         })
@@ -51,7 +51,7 @@ module.exports = async (req, res) => {
 
     // if user not found, send message
     if (passUser == null) {
-        res.send("Sorry, no user with that email address was found.")
+        res.send("Sorry, no user with that username/account number combination was found.")
     } else {
 
         // toggle password change and save token to database
@@ -67,8 +67,8 @@ module.exports = async (req, res) => {
         // send email with link to change password (URL with token as part of query string)
 		try {
 			let transporter = nodemailer.createTransport({
-				host: "smtp.gmail.com",
-				port: 587,
+				host: "smtp-relay.gmail.com",
+				port: 25,
 				secure: false, 
 				auth: {
 				  user: "n.bohannan@palhealth.com", 
@@ -76,7 +76,7 @@ module.exports = async (req, res) => {
 				}
 			})
 			let info = await transporter.sendMail({
-				from: 'n.bohannan@palhealth.com', 
+				from: 'portalsupport@palhealth.com', 
 				to: passUser.email, 
 				subject: "Password Reset Link - PAL Provider Portal",
 				html: `Hello ${passUser.firstName + " " + passUser.lastName},<br><br>

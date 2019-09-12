@@ -14,8 +14,12 @@
       <img src="/PAL_BlueTexture-350w.png" id="login-image" alt="PAL Main Image">
     </div>
     <div class="forgot-text"><%= messageText %></div>
+    <div class="forgot-text" id="red"><%= redText %></div>
     <a href="/sendreorder/<%= orderNumber %>" class="back-button-container">
         <div class="back-button">Confirm Reorder</div>
+    </a>
+    <a href="javascript:history.back()" class="second-button-container">
+      <div class="back-button">Go Back</div>
     </a>
   </div>
 </body>

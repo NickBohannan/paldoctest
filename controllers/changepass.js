@@ -3,6 +3,7 @@ const moment = require('moment')
 
 const User = require("../models/user")
 const logger = require('../logger.js')
+const schema = require('../passvalidator.js')
 
 module.exports = async (req, res) => {
 
@@ -27,6 +28,10 @@ module.exports = async (req, res) => {
             errorText: "Please go back and make sure both passwords are identical."
         })
         return 1
+    } else if (!schema.validate(req.body.newPassword)) {
+        res.render("error", {
+            errorText: "Please make sure your password has at least one uppercase letter, one lowercase letter, one number and one symbol."
+        })
     } else {
         let user 
         let userIP = req.headers['x-forwarded-for']

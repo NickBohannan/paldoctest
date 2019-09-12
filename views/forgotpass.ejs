@@ -17,12 +17,15 @@
         For providers with more than one account: use any account number you used while signing up for the portal. 
     </div>
     <form action="/forgotpass" method="post" id="login-form">
-      <label class="changepass-label">Username</label>  
+      <label class="changepass-label">Username*</label>  
       <input type="text" class="login-input" name="username" placeholder="Username">
       <label class="changepass-label">Account Number*</label>
       <input type="text" class="login-input" name="accountNumber" placeholder="Account Number">
       <input type="submit" id="login-submit" value="Submit">
     </form>
+    <a href="javascript:history.back()" class="second-button-container">
+      <div class="back-button">Go Back</div>
+    </a>
     <div id="login-copyright">&copy; 2019 PAL Health Technologies</div>
     <div id="rights-reserved">All Rights Reserved</div>
   </div>
