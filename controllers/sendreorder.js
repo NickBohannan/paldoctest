@@ -31,14 +31,14 @@ module.exports = async (req, res) => {
 		})
 		
 		let info = await transporter.sendMail({
-			from: 'portalsupport@palhealth.com', 
+			from: '"Portal Support" <portalsupport@palhealth.com>', 
 			to: `n.bohannan@palhealth.com, ${req.cookies.userEmail}, j.robertson@palhealth.com`,
 			subject: "TESTING PLEASE DISREGARD Reorder from PAL Provider Portal",
 			html: `Hello Customer Service Team,<br><br>
 
 			Please create a reorder for the following: ` + order.order_no_ext + `
 			<br><br>
-			This individual is a patient of ` + order.customer_name + `.
+			This individual is a patient of ` + order.customer_name + ` (account number ${order.customer_code}).
 			<br><br>
 			Thank you,<br> 
 			PAL Provider Portal`

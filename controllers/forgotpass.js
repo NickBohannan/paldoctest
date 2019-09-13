@@ -76,7 +76,7 @@ module.exports = async (req, res) => {
 				}
 			})
 			let info = await transporter.sendMail({
-				from: 'portalsupport@palhealth.com', 
+				from: '"Portal Support" <portalsupport@palhealth.com>', 
 				to: passUser.email, 
 				subject: "Password Reset Link - PAL Provider Portal",
 				html: `Hello ${passUser.firstName + " " + passUser.lastName},<br><br>
@@ -97,7 +97,9 @@ module.exports = async (req, res) => {
                 message: `${moment()} - user ${passUser.email} (${userIP}) has requested a password reset and email has been sent.`
             })
 
-			res.send(`An email has been sent to ${passUser.email} with a link to change your password. Please close tab.`)
+			res.render('message', {
+                messageText: `An email has been sent to ${passUser.email} with a link to change your password. Please close tab.`
+            })
 		} catch (err) {
 			console.error(err)
 		}

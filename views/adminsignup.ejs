@@ -14,7 +14,7 @@
             <img src="PAL_BlueTexture-350w.png" id="login-image" alt="PAL Main Image">
         </div>
         <div id="login-text">Order Portal Sign Up</div>
-        <form action="/signup" method="post" id="signup-form">
+        <form action="/admin/signup" method="post" id="signup-form">
             <div class="form-row">
                 <div class="signup-label">
                     <label>First Name*</label>
@@ -65,6 +65,18 @@
                 <div class="signup-label">
                     <label>Account Number 4</label>
                     <input type="text" class="login-input" name="accountNumber4" placeholder="Account Number 4">
+                </div>
+            </div>
+            <div class="form-separator"></div>
+            <div id="account-number-text">Passwords must be at least 8 characters in length and include at least one uppercase letter, one lowercase letter, one number and one special character (ex. !$%*&).</div>
+            <div class="form-row">
+                <div class="signup-label">
+                    <label>Password*</label>
+                    <input type="password" class="login-input" name="password" placeholder="Password*">
+                </div>
+                <div class="signup-label">
+                    <label>Confirm Password*</label>
+                    <input type="password" class="login-input" name="confirmPassword" placeholder="Confirm Password*">
                 </div>
             </div>
             <div id="account-number-text">* - required information</div>

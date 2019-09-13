@@ -20,6 +20,7 @@ const getReorderSearch = require('../controllers/getreordersearch')
 const postReorderSearch = require('../controllers/postreordersearch')
 const adminUpdate = require('../controllers/admin')
 const getChangePass = require('../controllers/getchangepass')
+const adminSignUp = require('../controllers/adminsignup')
 
 // Route List
 router.get("/login", (req, res) => {
@@ -33,6 +34,12 @@ router.get("/signup", (req, res) => {
 });
 
 router.post("/signup", signup);
+
+router.get("/admin/signup", (req, res) => {
+    res.render("adminsignup")
+})
+
+router.post("/admin/signup", adminSignUp)
 
 router.get("/", landingPage);
 

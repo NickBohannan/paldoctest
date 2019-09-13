@@ -14,9 +14,9 @@ module.exports = async (req, res) => {
 
     // find the user currently logged in
     try {
-        user = await User.findOne({ where: { username: req.body.username } });
+        user = await User.findOne({ where: { username: req.body.username } })
     } catch (err) {
-        console.error(err);
+        console.error(err)
     }
 
     // error handling for not finding user

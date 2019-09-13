@@ -19,6 +19,10 @@ const User = db.define('users', {
         type: Sequelize.STRING,
         allowNull: false
     },
+    phone: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     accountNumber1: {
         type: Sequelize.STRING,
         allowNull: false
