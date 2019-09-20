@@ -1,14 +1,12 @@
-const bcrypt = require('bcrypt')
-const moment = require('moment')
+const bcrypt = require("bcrypt");
 
-const User = require("../models/user")
-const logger = require('../logger.js')
-const schema = require('../passvalidator.js')
+const User = require("../models/user");
+
 
 module.exports = async (req, res) => {
 
     // run through error handling conditionals
-    if (req.body.username == '') {
+    if (req.body.email == '') {
         res.render("error", {
             errorText: "Please go back and enter your email address."
         })
@@ -28,20 +26,16 @@ module.exports = async (req, res) => {
             errorText: "Please go back and make sure both passwords are identical."
         })
         return 1
-    } else if (!schema.validate(req.body.newPassword)) {
-        res.render("error", {
-            errorText: "Please make sure your password has at least one uppercase letter, one lowercase letter, one number and one symbol."
-        })
     } else {
         let user 
-        let userIP = req.headers['x-forwarded-for']
 
         // find the user based on whether they are toggled to change their password and if they have
         try {
             user = await User.findOne({ 
                 where: {
-                    username: req.body.username,
-                    isChangingPassword: true
+                    email: req.body.email,
+                    isChangingPassword: true,
+                    passToken: req.body.token
                 }
             })
         } catch (err) {
@@ -54,14 +48,9 @@ module.exports = async (req, res) => {
             let newHashPass = await bcrypt.hash(req.body.newPassword, saltRounds)
             await user.update({
                 hashedPassword: newHashPass,
-                isChangingPassword: false
+                isChangingPassword: false,
+                passToken: null
             })
-
-            logger.log({
-                level: 'info',
-                message: `${moment()} - user ${user.username} (${user.email}) (${userIP}) has successfully changed passwords.`
-            })
-
         } catch(err) {
             console.error(err)
         }

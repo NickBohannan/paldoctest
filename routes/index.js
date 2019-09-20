@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-// This is the route index for the whole portal. Controllers listed below are the logic for all the routes. Please see corresponding controllers for site logic. 
-
 // Grabbing Controllers
 const forgotPass = require('../controllers/forgotpass')
 const changePass = require('../controllers/changepass')
@@ -14,13 +12,6 @@ const portal = require('../controllers/portal')
 const getSearch = require('../controllers/getsearch')
 const postSearch = require('../controllers/postsearch')
 const all = require('../controllers/all')
-const confirmReorder = require('../controllers/confirmreorder')
-const sendReorder = require('../controllers/sendreorder')
-const getReorderSearch = require('../controllers/getreordersearch')
-const postReorderSearch = require('../controllers/postreordersearch')
-const adminUpdate = require('../controllers/admin')
-const getChangePass = require('../controllers/getchangepass')
-const adminSignUp = require('../controllers/adminsignup')
 
 // Route List
 router.get("/login", (req, res) => {
@@ -35,23 +26,9 @@ router.get("/signup", (req, res) => {
 
 router.post("/signup", signup);
 
-router.get("/admin/signup", (req, res) => {
-    res.render("adminsignup")
-})
-
-router.post("/admin/signup", adminSignUp)
-
 router.get("/", landingPage);
 
 router.get("/orders/:order_no_ext", singleOrder);
-
-router.get("/confirmreorder/:order_no_ext", confirmReorder);
-
-router.get("/sendreorder/:order_no_ext", sendReorder);
-
-router.get("/reordersearch", getReorderSearch)
-
-router.post("/reordersearch", postReorderSearch)
 
 router.get("/forgotpass", (req, res) => {
     res.render("forgotpass", {
@@ -61,7 +38,9 @@ router.get("/forgotpass", (req, res) => {
 
 router.post("/forgotpass", forgotPass)
 
-router.get("/changepass", getChangePass) 
+router.get("/changepass", (req, res) => {
+    res.render("changepass")
+})
 
 router.post("/changepass", changePass)
 
@@ -72,11 +51,5 @@ router.get("/search", getSearch);
 router.get("/list/:page_no", all);
 
 router.post("/search", postSearch);
-
-router.get("/admin", (req, res) => {
-	res.render("admin")
-})
-
-router.post("/admin", adminUpdate)
 
 module.exports = router;

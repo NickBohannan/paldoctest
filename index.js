@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const path = require('path')
 const ejsLint = require('ejs-lint')
+// const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
 
 const routes = require('./routes/index')
 
@@ -12,6 +13,7 @@ const User = require('./models/user')
 
 const app = express()
 
+// app.use(redirectToHTTPS())
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -19,6 +21,7 @@ app.use(express.static(__dirname + '/public'))
 app.use('/', routes)
 
 const port = process.env.PORT || 8080
+
 
 app.set('port', port)
 app.set('view engine', 'ejs')

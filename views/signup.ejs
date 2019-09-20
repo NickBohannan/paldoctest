@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
 </head>
 
-<body class="signup-body">
+<body class="login-body">
     <div class="login-container" id="signup-container">
         <div class="login-image-container">
             <img src="PAL_BlueTexture-350w.png" id="login-image" alt="PAL Main Image">
@@ -23,16 +23,6 @@
                 <div class="signup-label">
                     <label>Last Name*</label>
                     <input type="text" class="login-input" name="lastName" placeholder="Last Name*">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="signup-label">
-                    <label>Username*</label>
-                    <input type="text" class="login-input" name="username" placeholder="Username*">
-                </div>
-                <div class="signup-label">
-                    <label>Phone Number*</label>
-                    <input type="text" class="login-input" name="phoneNumber" placeholder="Phone Number*">
                 </div>
             </div>
             <div class="form-row">
@@ -67,6 +57,17 @@
                     <input type="text" class="login-input" name="accountNumber4" placeholder="Account Number 4">
                 </div>
             </div>
+            <div class="form-separator"></div>
+            <div class="form-row">
+                <div class="signup-label">
+                    <label>Password*</label>
+                    <input type="password" class="login-input" name="password" placeholder="Password*">
+                </div>
+                <div class="signup-label">
+                    <label>Confirm Password*</label>
+                    <input type="password" class="login-input" name="confirmPassword" placeholder="Confirm Password*">
+                </div>
+            </div>
             <div id="account-number-text">* - required information</div>
             <input type="submit" id="login-submit" value="Sign Up">
         </form>
@@ -74,23 +75,5 @@
         <div id="rights-reserved">All Rights Reserved</div>
     </div>
 </body>
-<script>
 
-    function deleteAllCookies() {
-        let cookies = document.cookie.split(";");
-
-        for (let i = 0; i < cookies.length; i++) {
-            let cookie = cookies[i];
-            let eqPos = cookie.indexOf("=");
-            let name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-        }
-    }
-
-    setTimeout(() => {
-      deleteAllCookies()
-      window.location = '/login'
-    }, 900000)
-    
-</script>
 </html>

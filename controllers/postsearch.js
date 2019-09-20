@@ -34,7 +34,7 @@ module.exports = async (req, res) => {
 					try {
 						let user = await User.findOne({
 							where: {
-								username: req.cookies.username
+								email: req.cookies.userEmail
 							}
 						})
 						
@@ -87,7 +87,7 @@ module.exports = async (req, res) => {
                     try {
                         let user = await User.findOne({
                             where: {
-                                username: req.cookies.username
+                                email: req.cookies.userEmail
                             }})
                         let orders = await Order.findAll({
                                 where: { 

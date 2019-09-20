@@ -31,7 +31,7 @@
                         <div class="radio-row-container">
                             <div class="row radio-row">
                                 <input type="radio" id="radio-input" name="searchradio" value="dateshipped" />
-                                <label for="radio-input">Date Entered (MM/DD/YYYY)</label>
+                                <label for="radio-input">Date Shipped (MM/DD/YYYY)</label>
                             </div>
                         </div>
                     </div>
@@ -41,24 +41,7 @@
             <div id="pt-asterisk">* - If patient name search results in zero results, try adding a middle initial without a period or enter only the last name.</div>
         </div>
     </div>
+    <%- include('footer') %>
 </body>
-<script>
 
-    function deleteAllCookies() {
-        let cookies = document.cookie.split(";");
-
-        for (let i = 0; i < cookies.length; i++) {
-            let cookie = cookies[i];
-            let eqPos = cookie.indexOf("=");
-            let name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-        }
-    }
-
-    setTimeout(() => {
-      deleteAllCookies()
-      window.location = '/login'
-    }, 900000)
-    
-</script>
 </html>

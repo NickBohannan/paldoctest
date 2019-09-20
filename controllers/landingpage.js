@@ -19,12 +19,12 @@ module.exports = async (req, res) => {
 
             let landingUser, orders, yearlyOrders, quarterlyOrders;
 			let nowDate = new Date(Date.now())
-            nowDate = nowDate - 31536000000	
+			nowDate = nowDate - 31536000000	
 
             // find the user that's logged in
             try {
                 landingUser = await User.findOne({
-                    where: { username: req.cookies.username }
+                    where: { email: req.cookies.userEmail }
                 });
 
                 // find all orders that belong to user and sort them by date
@@ -39,7 +39,7 @@ module.exports = async (req, res) => {
                             ]
                         },
 						entry_date: {
-							[Op.gt]: moment().subtract(12, 'months').add(moment().daysInMonth() - moment().date(), 'days').toDate()
+							[Op.gt]: moment().subtract(12, 'months').add(moment().date(), 'days').toDate()
 						}
                     },
                     order: [["entry_date", "DESC"]]
@@ -223,8 +223,6 @@ module.exports = async (req, res) => {
                 name: orders[0].customer_name,
                 accountNumber: orders[0].customer_code
             };
-
-            console.log(res.cookies)
 
             res.render("landingpage", {
                 orders: orders,
