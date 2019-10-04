@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>PAL Customer Portal</title>
+    <title>PAL Provider Portal</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
@@ -21,7 +21,7 @@
             <div class="row" id="widget-row">
                 <div class="chart-container">
                     <div class="chart-title">
-                        Product Shipments per Month
+                        Shipments per Month
                     </div>
                     <canvas id="myChart" width="400" height="400"></canvas>
                 </div>
@@ -133,7 +133,6 @@
             </div>
         </div>
     </div>
-    <%- include('footer') %>
     <script>
 
         let currentMonth = new Date().getMonth()+1
@@ -201,7 +200,23 @@
             }
         })
 
-		document.getElementById("past-month").innerHTML = data[data.length-1]
+        document.getElementById("past-month").innerHTML = data[data.length-1]
+        
+        function deleteAllCookies() {
+            let cookies = document.cookie.split(";");
+
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i];
+                let eqPos = cookie.indexOf("=");
+                let name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+        }
+
+        setTimeout(() => {
+            deleteAllCookies()
+            window.location = '/login'
+        }, 900000)
 		
     </script>
 </body>

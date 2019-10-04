@@ -2,20 +2,6 @@ const Sequelize = require('sequelize')
 
 let db
 
-//if (process.env.HOME == "C:\\Users\\n.bohannan") {
-//    db = new Sequelize('paltest', 'postgres', 'admin', {
-//        host: 'localhost',
-//        dialect: 'postgres'
-//    })
-//} else if (process.env.HOME == "/Users/nickbohannan") {
-//    db = new Sequelize('paltest', 'postgres', 'admin', {
-//        host: 'localhost',
-//        dialect: 'postgres'
-//    })
-//} else {
-//    db = new Sequelize(process.env.DATABASE_URL)
-//}
-
 db = new Sequelize('palportal', process.env.DATABASE_USER, process.env.DATABASE_PASS, {
 	dialect: 'mssql'
 })

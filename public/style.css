@@ -223,7 +223,7 @@ a.searchtype {
     background-color: #102245;
     border-top: 1px solid white;
     min-width: 14rem;
-    min-height: calc(100vh - 100px);
+    min-height: 100%;
 }
 
 .sidebar-element-container {
@@ -308,7 +308,8 @@ body {
 }
 
 .all-order-container {
-    width: calc(100% - 14rem);
+    width: 100vw;
+	height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -382,7 +383,7 @@ body {
 
 .grid-container-2 {
     font-size: 20px;
-    height: 200px;
+    height: 250px;
     width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -404,7 +405,7 @@ body {
 }
 
 #forgot-link {
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .forgot-text {
@@ -413,6 +414,10 @@ body {
     margin-top: 15px;
     margin-left: 15px;
     margin-right: 15px;
+}
+
+#red {
+    color: red;
 }
 
 .note-box {
@@ -491,7 +496,7 @@ body {
 }
 
 .order-value-element {
-    padding: 2px;
+    padding: 2px 10px 2px 0;
 }
 
 .order-label-element {
@@ -696,8 +701,9 @@ input[type="radio"] {
 .page-link-row {
     margin-top: 10px;
     font-size: 20px;
-    height: 30px;
-    width: 100%;
+    height: auto;
+    width: 70%;
+    overflow: auto;
     display: flex;
     justify-content: center;
 }
@@ -705,6 +711,7 @@ input[type="radio"] {
 .page-link {
     margin-top: 0px;
     padding: 5px;
+    color: #102245;
 }
 
 .radio-container {
@@ -748,6 +755,13 @@ form #search-form {
     background-color: #d6d6d6;
 }
 
+.signup-body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #d6d6d6;
+}
+
 .login-container {
     display: flex;
     flex-direction: column;
@@ -785,7 +799,8 @@ form #search-form {
     color: white;
     background-color: #102245;
     margin-top: 15px;
-    max-width: 50%;
+    width: 200px;
+    height: 60px;
 }
 
 #login-submit:hover {
@@ -812,6 +827,18 @@ form #search-form {
     height: 60px;
     width: 200px;
     margin-top: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.second-button-container {
+    background-color: #102245;
+    border-radius: 10px;
+    height: 60px;
+    width: 200px;
     margin-bottom: 15px;
     display: flex;
     justify-content: center;
@@ -946,8 +973,7 @@ form #search-form {
 }
 
 .footer-container {
-    margin-left: 14rem;
-    width: calc(100% - 14rem);
+    width: 100%;
     height: 50px;
     background-color: #3d3d3d;
     font-size: 20px;
@@ -1000,7 +1026,13 @@ form #search-form {
 }
 
 #signup-link {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#login-support {
     margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 .form-row {
@@ -1145,4 +1177,79 @@ hr {
 	padding: 5px;
 	border: 1px solid #102245;
 }
+
+#reorder-container {
+	font-family: "Roboto", sans-serif;
+	font-size: 20px;
+	width: 650px;
+	height: 150px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#reorder-text {
+	margin-top: 20px;
+	max-width: 80%;
+	text-align: center;
+}
+
+
+#reorder-button {
+	text-align: center;
+	margin-top: 10px;
+	text-decoration: none;
+	width: 200px;
+	height: 60px;
+	background-color: #102245;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+}
+
+#reorder-container a {
+	text-decoration: none;
+}
+
+#supplies-form {
+    padding-top: 0;
+}
+
+.supply-row {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0 0 10px;
+}
+
+.supply-label {
+    font-size: 18px;
+    width: 250px;
+    vertical-align: middle;
+}
+
+.supply-field {
+    font-size: 18px;
+    width: 250px;
+}
+
+#supply-button {
+    cursor: pointer;
+    margin-top: 15px;
+    color: #102245;
+    border: 1px solid #102245;
+    width: 200px;
+}
+
+#supply-note {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+
+
+
 

@@ -11,7 +11,7 @@
 <body class="login-body">
   <div class="login-container">
     <div class="login-image-container">
-      <img src="PAL_BlueTexture-350w.png" id="login-image" alt="PAL Main Image">
+      <img src="/PAL_BlueTexture-350w.png" id="login-image" alt="PAL Main Image">
     </div>
     <div class="forgot-text"><%= messageText %></div>
     <a href="/login" class="back-button-container">
@@ -19,5 +19,23 @@
     </a>
   </div>
 </body>
+<script>
 
+    function deleteAllCookies() {
+        let cookies = document.cookie.split(";");
+
+        for (let i = 0; i < cookies.length; i++) {
+            let cookie = cookies[i];
+            let eqPos = cookie.indexOf("=");
+            let name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
+    }
+
+    setTimeout(() => {
+      deleteAllCookies()
+      window.location = '/login'
+    }, 900000)
+    
+</script>
 </html>

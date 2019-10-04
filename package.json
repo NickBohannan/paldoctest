@@ -17,13 +17,18 @@
     "ejs": "^2.6.1",
     "express": "^4.17.0",
     "express-http-to-https": "^1.1.4",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
     "node-fetch": "^2.6.0",
     "nodemailer": "^6.3.0",
+    "password-validator": "^5.0.1",
     "sequelize": "^6.0.0",
     "serve-favicon": "^2.5.0",
-    "tedious": "^6.2.0"
+    "tedious": "^6.2.0",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.1.0"
   },
   "devDependencies": {
     "ejs-lint": "^0.3.0",

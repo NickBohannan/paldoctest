@@ -13,11 +13,12 @@
     <div class="login-image-container">
       <img src="PAL_BlueTexture-350w.png" id="login-image" alt="PAL Main Image">
     </div>
-    <div class="forgot-text">Please enter your email address along with a new password.
+    <div class="forgot-text">Please enter your username along with a new password.
     </div>
     <form action="/changepass" method="post" id="login-form">
-      <label class="changepass-label">Email</label>  
-      <input type="text" class="login-input" name="email" placeholder="Email">
+      <label class="changepass-label">Username</label>  
+      <input type="text" class="login-input" name="username" placeholder="Username">
+      <div id="account-number-text">Passwords must include at least one uppercase letter, one lowercase letter, one number and one symbol.</div>
       <label class="changepass-label">New Password</label>  
       <input type="password" class="login-input" name="newPassword" placeholder="New Password">
       <label class="changepass-label">Confirm New Password</label>  
@@ -33,6 +34,23 @@
   let tokenIdElement = document.querySelector("#tokenId")
   let params = (new URL(document.location)).searchParams;
   tokenIdElement.value = params.get("token");
+
+  function deleteAllCookies() {
+        let cookies = document.cookie.split(";");
+
+        for (let i = 0; i < cookies.length; i++) {
+            let cookie = cookies[i];
+            let eqPos = cookie.indexOf("=");
+            let name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
+    }
+
+    setTimeout(() => {
+      deleteAllCookies()
+      window.location = '/login'
+    }, 900000)
+    
 </script>
 
 </html>

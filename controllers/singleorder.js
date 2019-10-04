@@ -59,7 +59,7 @@ module.exports = async (req, res) => {
 			} catch (err) {
 				console.log(err);
 			}
-			
+
             res.render("order", {
                 order: order,
 				manufacturing: manufacturing,

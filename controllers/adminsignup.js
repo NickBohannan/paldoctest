@@ -37,7 +37,11 @@ module.exports = async (req, res) => {
         res.render("error", {
             errorText: "Please make sure your password has at least one uppercase letter, one lowercase letter, one number and one symbol."
         })
-    } else {    
+    } else if (req.body.webmasterpass !== process.env.WEBMASTERPASS) {    
+        res.render("error", {
+            errorText: "The webmaster password you entered is incorrect. Please go back and try again."
+        })
+    } else {
         try {
             let testUsername = await User.findOne({
                 where: {
@@ -69,7 +73,7 @@ module.exports = async (req, res) => {
                 accountNumber4: req.body.accountNumber4,
                 email: req.body.email,
                 hashedPassword: hashPass
-            });
+            })
 
             logger.log({
                 level: 'info',

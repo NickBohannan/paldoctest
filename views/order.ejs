@@ -152,7 +152,13 @@
                         <div class="grid-container-2">
                             <div class="order-labels">
                                 <div class="order-label-element">
-                                    Street Address:
+                                    Address (Line 1):
+                                </div>
+                                <div class="order-label-element">
+                                    Address (Line 2):
+                                </div>
+                                <div class="order-label-element">
+                                    Address (Line 3):
                                 </div>
                                 <div class="order-label-element">
                                     City:
@@ -173,17 +179,28 @@
                                     Tracking Number:
                                 </div>
                             </div>
-                            <!-- <a
-                                href="https://www.fedex.com/en-us/home.html"
-                                class="shipping-data"
-                            >
-                                <%= order.order_no %>
-                            </a> -->
+
                             <div class="order-values-2">
                                 <div class="order-value-element">
-                                    <%= order.ship_to_addr1 %> <%=
-                                    order.ship_to_addr2 %> <%=
-                                    order.ship_to_addr3 %>
+                                    <% if (order.ship_to_addr1 !== '') { %>
+                                        <%= order.ship_to_addr1 %> 
+                                    <% } else { %>
+                                        N/A
+                                    <% } %>
+                                </div>
+                                <div class="order-value-element">
+                                    <% if (order.ship_to_addr2 !== '') { %>
+                                        <%= order.ship_to_addr2 %> 
+                                    <% } else { %>
+                                        N/A
+                                    <% } %>
+                                </div>
+                                <div class="order-value-element">
+                                    <% if (order.ship_to_addr3 !== '') { %>
+                                        <%= order.ship_to_addr3 %> 
+                                    <% } else { %>
+                                        N/A
+                                    <% } %>
                                 </div>
                                 <div class="order-value-element">
                                     <%= order.ship_to_city %>
@@ -207,7 +224,8 @@
                                 </div>
                                 <div class="order-value-element">
                                     <% if (order.tracking_number == null) { %>
-                                    <%= "N/A" %> <% } else if (order.tracking_number.substring(0, 2) == "1Z") { %> 
+                                    <%= "N/A" %> 
+                                    <% } else if (order.tracking_number.substring(0, 2) == "1Z") { %> 
                                     <% let url = "https://www.ups.com/track?loc=en_US&tracknum=" + order.tracking_number + "&requester=WT/trackdetails"%>
                                     <a href="<%= url %>" target="_blank">
                                         <%= order.tracking_number %>
@@ -221,20 +239,12 @@
                                 </div>
                             </div>
                         </div>
-
-
-                        
-                        
-                        <!-- Invoices will be taken from Great Plains, not the production database -->
-
-                        <!-- <% if (order.total_invoice !== 0) { %>
-                          <div class="single-order-shipping-container-title">
-                              Total Invoice
-                          </div>
-                          <div id="single-order-invoice">
-                            $<%= order.total_invoice %>
-                          </div>
-                        <% } %> -->
+						<div id="reorder-container">
+							<div id="reorder-text">If you would like to reorder this item, please click below and we will notify our customer service department.</div>
+							<a href="/confirmreorder/<%= order.order_no_ext %>">
+								<div id="reorder-button">Reorder</div>
+							</a>
+						</div>
 
                         <div class="note-container">
                             <div class="note-box">
@@ -249,6 +259,24 @@
                 </div>
             </div>
         </div>
-        <%- include('footer') %>
     </body>
+    <script>
+
+        function deleteAllCookies() {
+            let cookies = document.cookie.split(";");
+
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i];
+                let eqPos = cookie.indexOf("=");
+                let name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+        }
+
+        setTimeout(() => {
+            deleteAllCookies()
+            window.location = '/login'
+        }, 900000)
+        
+    </script>
 </html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>PAL Order Portal Search</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+</head>
+
+<body>
+    <%- include('header', {
+        cookies: cookies
+    }) %>
+    <div class="row">
+        <%- include('sidebar') %>
+        <div class="all-order-container">
+            <div>
+                Order Supplies
+            </div>
+            <form method="post" id="supplies-form" action="/ordersupplies">
+                <div class="form-row">
+                    <div class="signup-label">
+                        <label class="supply-label">STS Socks</label>
+                        <input type="text" class="supply-field" name="stssocks" placeholder="# of socks">
+                    </div>
+                    <div class="signup-label">
+                        <label class="supply-label">Ankle Brace Straps</label>
+                        <input type="text" class="supply-field" name="afostraps" placeholder="# of straps">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="signup-label">
+                        <label class="supply-label">Biofoam Boxes</label>
+                        <input type="text" class="supply-field" name="biofoams" placeholder="# of boxes">
+                    </div>
+                    <div class="signup-label">
+                        <label class="supply-label">Shipping Labels</label>
+                        <input type="text" class="supply-field" name="shiplabels" placeholder="# of labels">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="signup-label">
+                        <label class="supply-label">Boxes</label>
+                        <input type="text" class="supply-field" name="boxes" placeholder="# of boxes">
+                    </div>
+                    <div class="signup-label">
+                        <label class="supply-label">Order Forms</label>
+                        <input type="text" class="supply-field" name="orderforms" placeholder="# of forms">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="signup-label">
+                        <label class="supply-label">STS Starter Kits</label>
+                        <input type="text" class="supply-field" name="starterkits" placeholder="# of kits">
+                    </div>
+                </div>
+                <div id="supply-note">
+                    <label class="supply-label">Additional Notes</label>
+                    <textarea id="" name="notes" rows="10" cols="70"></textarea>
+                </div>
+                <input type="submit" id="supply-button" value="Submit">
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+
+    function deleteAllCookies() {
+        let cookies = document.cookie.split(";");
+
+        for (let i = 0; i < cookies.length; i++) {
+            let cookie = cookies[i];
+            let eqPos = cookie.indexOf("=");
+            let name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
+    }
+
+    setTimeout(() => {
+      deleteAllCookies()
+      window.location = '/login'
+    }, 900000)
+    
+</script>
+</html>
