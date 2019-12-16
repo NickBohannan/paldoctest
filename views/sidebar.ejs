@@ -25,14 +25,6 @@
                 Search Orders
             </div>
         </a>
-        <a id="formstack-link">
-            <div class="sidebar-element-container" id="new-order">
-                <div class="icon-container">
-                    <i class="fas fa-clipboard-list"></i>
-                </div>
-                Create New Order
-            </div>
-        </a>
 		<a href="/reordersearch">
             <div class="sidebar-element-container" id="support">
                 <div class="icon-container">
@@ -135,23 +127,7 @@
         }
     }
 
-    let formstackLink = document.querySelector("#formstack-link");
     let logoutLink = document.querySelector("#logout-link");
-
-    formstackLink.addEventListener("click", () => {
-        let formstackURL =
-            `http://palhealthtechnologies.formstack.com/forms/pal_prescription_orthoses_order_form?` +
-            `Account_Number=${Cookies.get("accountNumber")}&` +
-            `Name=${Cookies.get("name")}&` +
-            `Address=${Cookies.get("address")}&` +
-            `Date=${getDate()}&` +
-            `Phone=${Cookies.get("phone").substring(
-                0,
-                Cookies.get("phone").length - 4
-            )}`;
-
-        window.open(formstackURL);
-    });
 
     logoutLink.addEventListener("click", e => {
         e.preventDefault();

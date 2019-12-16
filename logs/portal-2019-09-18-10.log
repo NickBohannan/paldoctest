@@ -1,0 +1,5 @@
+{"level":"info","message":"New User Login: n.bohannan - IP Address: 10.60.0.202:58193 - Wed Sep 18 2019 10:41:26 GMT-0700"}
+{"level":"warn","message":"Wed Sep 18 2019 10:42:00 GMT-0700 - User n.bohannan (n.bohannan@palhealth.com) (10.60.0.202:58194) has accessed the admin page and has successfully accessed the following account numbers: 0333649101, , , "}
+{"level":"info","message":"Wed Sep 18 2019 10:43:12 GMT-0700 - user n.bohannan@palhealth.com (10.60.0.202:58193) has requested a password reset and email has been sent."}
+{"level":"info","message":"Wed Sep 18 2019 10:43:42 GMT-0700 - user n.bohannan (n.bohannan@palhealth.com) (10.60.0.202:58193) has successfully changed passwords."}
+{"level":"info","message":"New User Login: n.bohannan - IP Address: 10.60.0.202:58193 - Wed Sep 18 2019 10:43:54 GMT-0700"}

@@ -58,9 +58,9 @@
                         <%= orders[i].order_no_ext %>
                     </div>
                     <div class="text-box">
-						<% if (orders[i].product_name == "") { %>
-						Awaiting Scan
-						<% } else { %> 
+                        <% if (orders[i].product_type == "WHOLESALE") { %> 
+                        WHOLESALE
+                        <% } else { %>
 						<%= orders[i].product_name %>
 						<% } %>
                     </div>

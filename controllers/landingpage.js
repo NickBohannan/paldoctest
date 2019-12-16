@@ -4,6 +4,7 @@ const moment = require('moment')
 
 const Order = require("../models/order");
 const User = require("../models/user");
+const Login = require("../models/login")
 
 const Op = Sequelize.Op
 
@@ -44,6 +45,22 @@ module.exports = async (req, res) => {
                     },
                     order: [["entry_date", "DESC"]]
                 });
+
+                let now = moment().utcOffset(-6).format()
+
+                console.log('HERE IS THE TIME: ' + now)
+
+                // create a row in the login table 
+                await Login.create({
+                    username: landingUser.username,
+                    customer_name: orders[0].customer_name,
+                    accountNumber1: landingUser.accountNumber1,
+                    accountNumber2: landingUser.accountNumber2,
+                    accountNumber3: landingUser.accountNumber3,
+                    accountNumber4: landingUser.accountNumber4,
+                    date_login: now.toString()
+                })
+
             } catch (err) {
                 console.error(err);
             }

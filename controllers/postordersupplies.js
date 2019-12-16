@@ -12,11 +12,7 @@ module.exports = async (req, res) => {
 		let transporter = nodemailer.createTransport({
 			host: "smtp-relay.gmail.com",
 			port: 25,
-			secure: false, 
-			auth: {
-			  user: "n.bohannan@palhealth.com",
-			  pass: process.env.EMAILPASS 
-			}
+			secure: false
 		})
 		
 		let info = await transporter.sendMail({

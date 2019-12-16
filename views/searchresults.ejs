@@ -40,7 +40,11 @@
                         <%= order.order_no_ext %>
                     </div>
                     <div class="text-box">
+                        <% if (order.product_type == "WHOLESALE") { %> 
+                        WHOLESALE
+                        <% } else { %>
                         <%= order.product_name %>
+                        <% } %>
                     </div>
                     <div class="text-box patient">
                         <%= order.patient_name %>
