@@ -21,7 +21,7 @@
     "https": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "nodemailer": "^6.3.0",
     "password-validator": "^5.0.1",
     "sequelize": "^6.0.0",
